@@ -1,0 +1,392 @@
+﻿{
+  "siteSettings": {
+    "siteTitle": "Storm Ekspress.",
+    "siteDescription": "Storm Ekspress Karabük",
+    "seoDescription": "Yüksek kaliteli demir-çelik ürünleri ve hizmetleri  başta İstanbul olmak üzere ülkemizin her yerinde hizmet vermeye devam ediyoruz.",
+    "keywords": [ "1" ],
+    "FooterCopyright": "Storm Ekspress. Tüm hakları saklıdır © {0}",
+    "GoogleMapUrl": ""
+  },
+
+  "header": {
+    "Title": "Storm Ekspress Kurye",
+    "SubTitle": "Kuryeden Daha fazlasi",
+    "Description": "Karabük'ün her yerine teslimatlarınızı 7/24 hızlı ve güvenle teslim ediyoruz."
+  },
+
+  "intro": [
+    {
+      "id": 1,
+      "title": "Hızlı ve Güvenilir Kurye Hizmeti",
+      "subtitle": "Siz işinizi yapın teslimatı <span class=\"text-primary\">Bize</span> bırakın...",
+      "imageUrl": "/assets/img/karabuk-kurye-1.webp",
+      "imageAlt": "Karabük kurye hizmeti"
+    },
+    {
+      "id": 2,
+      "title": "",
+      "subtitle": "Karabük ve çevresine teslimatlarınızı  <span class=\"text-primary\">Storm Ekspress</span> olarak 7/24 hızlı ve güvenli bir şekilde yetiştiriyoruz.",
+      "imageUrl": "/assets/img/karabuk-kurye-2.webp",
+      "imageAlt": "Safranbolu kurye hizmeti"
+    }
+  ],
+
+  "menu": [
+    {
+      "id": 1,
+      "title": "Anasayfa",
+      "url": "/"
+    },
+    {
+      "id": 2,
+      "title": "Hakkımızda",
+      "url": "/hakkimizda"
+    },
+    {
+      "id": 3,
+      "title": "Hizmetlerimiz",
+      "url": "/hizmetlerimiz"
+    },
+    {
+      "id": 4,
+      "title": "İletişim",
+      "url": "/iletisim"
+    }
+  ],
+
+  "aboutUs": {
+    "mission": "Misyonumuz",
+    "missionText": "Karabük, Safranbolu ve çevresindeki restoranlar ile kafelere yönelik hızlı, güvenli ve müşteri odaklı kurye hizmetleri sunan <b>Storm Ekspress</b> olarak, işimizi büyük bir titizlik ve sorumlulukla yürütüyoruz. Amacımız, her bir siparişi zamanında, eksiksiz ve güvenli bir şekilde teslim etmek, böylece hem restoranlarımıza hem de son kullanıcılarımıza yüksek kaliteli bir deneyim yaşatmaktır.<br/> <br/> <br/> Hizmetlerimizi sürekli olarak geliştirmek ve en iyi çözümü sunmak için teknolojiyi etkin bir şekilde kullanıyoruz. Siparişlerinizi hızlıca alıp, güvenli ve kusursuz bir şekilde adresinize ulaştırırken, kurye ekiplerimiz de sürekli eğitim ve denetimle desteklenmektedir. Tüm bu süreçlerde çevreye duyarlı olmayı ve yerel ekonomiyi güçlendirmeyi de misyonumuzun bir parçası olarak görüyoruz.",
+    "missionImageUrl": "/assets/img/karabuk-kurye-misyon.webp",
+    "missionImageAlt": "Karabük ve Safranboluda kurye misyonumuz",
+    "vision": "Vizyonumuz",
+    "visionText": "Karabük, Safranbolu ve çevresindeki yerel dinamiklere uyum sağlayarak, kurye hizmetlerini daha geniş bir ağla sunmak ve her zaman güvenilir, kaliteli ve zamanında hizmet anlayışını sürdürmektir.</br></br>Müşterilerimizin memnuniyeti, işimizin merkezinde yer alırken, aynı zamanda çalışanlarımıza da değer veriyoruz. Ailemizin bir parçası olan tüm ekip arkadaşlarımız, bu misyon doğrultusunda güçlü bir bağlılık ve özveriyle hizmet etmektedir. Sadece bir teslimat noktası değil, aynı zamanda bir çözüm ortağı olmayı hedefliyoruz.</br></br>Her zaman yenilikçi, çevre dostu ve müşteri odaklı bir yaklaşım ile Karabük, Safranbolu ve çevresindeki her bireye ve işletmeye değer katmaya devam edeceğiz.",
+    "visionImageUrl": "/assets/img/karabuk-kurye-vizyon.webp",
+    "visionImageAlt": "Karabük ve Safranboluda kurye visyonumuz",
+    "whyUs": "Neden Biz?",
+    "whyUsText": "Zamanında teslimat, güvenlik, yüksek kalite ve müşteri memnuniyeti garantisi.Hizmetlerimizi en yüksek hızda ve zamanında sunmak, işimizin temel prensiplerinden biridir. Zaman, özellikle restoran ve kafe sektöründe kritik bir faktördür. Siparişlerinizi eksiksiz ve hızlı bir şekilde ulaştırmak, işimizin en önemli önceliğidir. Bizimle çalışarak, her zaman dakik ve zamanında teslimatlar alacağınızdan emin olabilirsiniz."
+  },
+
+  "teamMembers": [
+    {
+      "id": 1,
+      "name": "",
+      "title": "",
+      "imageUrl": "",
+      "imageAlt": "",
+      "socialMedias": [
+        {
+          "icon": "",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "",
+      "title": "",
+      "imageUrl": "",
+      "imageAlt": "",
+      "socialMedias": [
+        {
+          "icon": "",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "",
+      "title": "",
+      "imageUrl": "",
+      "imageAlt": "",
+      "socialMedias": [
+        {
+          "icon": "",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "",
+      "title": "",
+      "imageUrl": "",
+      "imageAlt": "",
+      "socialMedias": [
+        {
+          "icon": "",
+          "url": ""
+        }
+      ]
+    }
+  ],
+
+  "references": [
+    {
+      "imageUrl": "/assets/img/references/kardemir.png",
+      "name": "Kardemir"
+    },
+    {
+      "imageUrl": "/assets/img/references/medikar.png",
+      "name": "Medikar"
+    },
+    {
+      "imageUrl": "/assets/img/references/a.png",
+      "name": "a"
+    },
+    {
+      "imageUrl": "/assets/img/references/b.png",
+      "name": "b"
+    },
+    {
+      "imageUrl": "/assets/img/references/c.png",
+      "name": "c"
+    },
+    {
+      "imageUrl": "/assets/img/references/d.png",
+      "name": "d"
+    },
+    {
+      "imageUrl": "/assets/img/references/e.png",
+      "name": "e"
+    },
+    {
+      "imageUrl": "/assets/img/references/f.png",
+      "name": "f"
+    },
+    {
+      "imageUrl": "/assets/img/references/g.png",
+      "name": "g"
+    },
+    {
+      "imageUrl": "/assets/img/references/h.png",
+      "name": "h"
+    }
+  ],
+
+  "products": [
+    {
+      "id": 1,
+      "name": "İnşaat Demiri",
+      "description": "8mm ile 40mm arasında çeşitli çaplarda üretilen donatılar (nervürlü çelik), modern çağın yüksek binalarının yanı sıra yol, köprü, viyadük, tünel gibi birçok yapının yapımında kullanılmaktadır.",
+      "categoryId": 1,
+      "imageUrl": "/assets/img/product/insaat-demiri.jpg"
+    },
+    {
+      "id": 2,
+      "name": "İnşaat Demiri",
+      "description": "8mm ile 40mm arasında çeşitli çaplarda üretilen donatılar (nervürlü çelik), modern çağın yüksek binalarının yanı sıra yol, köprü, viyadük, tünel gibi birçok yapının yapımında kullanılmaktadır.",
+      "categoryId": 1,
+      "imageUrl": "/assets/img/product/insaat-demiri2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "İnşaat Demiri",
+      "description": "8mm ile 40mm arasında çeşitli çaplarda üretilen donatılar (nervürlü çelik), modern çağın yüksek binalarının yanı sıra yol, köprü, viyadük, tünel gibi birçok yapının yapımında kullanılmaktadır.",
+      "categoryId": 1,
+      "imageUrl": "/assets/img/product/insaat-demiri3.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Filmaşin",
+      "description": "Sıcak haddeleme yöntemiyle üretilen ve çoğunlukla soğuk seçme ve yuvarlak malzemelerin üretiminde kullanılan (civata, somun, elektrot, tel-çivi vb.) kangal şeklinde kullanıcılara sunulan yarı mamül malzemedir.",
+      "categoryId": 2,
+      "imageUrl": "/assets/img/product/filmasin.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Filmaşin",
+      "description": "Sıcak haddeleme yöntemiyle üretilen ve çoğunlukla soğuk seçme ve yuvarlak malzemelerin üretiminde kullanılan (civata, somun, elektrot, tel-çivi vb.) kangal şeklinde kullanıcılara sunulan yarı mamül malzemedir.",
+      "categoryId": 2,
+      "imageUrl": "/assets/img/product/filmasin2.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Filmaşin",
+      "description": "Sıcak haddeleme yöntemiyle üretilen ve çoğunlukla soğuk seçme ve yuvarlak malzemelerin üretiminde kullanılan (civata, somun, elektrot, tel-çivi vb.) kangal şeklinde kullanıcılara sunulan yarı mamül malzemedir.",
+      "categoryId": 2,
+      "imageUrl": "/assets/img/product/filmasin3.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Kutu Profil ve Boru",
+      "description": "Kare ve dikdörtgen kutu profiller; üzerinde normlara uygun olarak ve standart olarak kalite çeşitlerini içeren çelik bantlardan yüksek frekans kaynağı ile imal edilmektedir. Kare ve dikdörtgen kutu şekli olan profiller sıcak ve soğuk bantlardan ileri teknoloji kullanımı ile üretilmektedir. Sanayi boruları; istek üzerine değişik kalitede, sıcak haddelenmiş, dekape edilmiş veya soğuk haddelenmiş bantlardan yüzeyleri kromaj ve benzeri uygulamalara uygun şekilde üretilmektedir.",
+      "categoryId": 3,
+      "imageUrl": "/assets/img/product/profil-boru.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Kutu Profil ve Boru",
+      "description": "Kare ve dikdörtgen kutu profiller; üzerinde normlara uygun olarak ve standart olarak kalite çeşitlerini içeren çelik bantlardan yüksek frekans kaynağı ile imal edilmektedir. Kare ve dikdörtgen kutu şekli olan profiller sıcak ve soğuk bantlardan ileri teknoloji kullanımı ile üretilmektedir. Sanayi boruları; istek üzerine değişik kalitede, sıcak haddelenmiş, dekape edilmiş veya soğuk haddelenmiş bantlardan yüzeyleri kromaj ve benzeri uygulamalara uygun şekilde üretilmektedir.",
+      "categoryId": 3,
+      "imageUrl": "/assets/img/product/profil-boru2.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Kutu Profil ve Boru",
+      "description": "Kare ve dikdörtgen kutu profiller; üzerinde normlara uygun olarak ve standart olarak kalite çeşitlerini içeren çelik bantlardan yüksek frekans kaynağı ile imal edilmektedir. Kare ve dikdörtgen kutu şekli olan profiller sıcak ve soğuk bantlardan ileri teknoloji kullanımı ile üretilmektedir. Sanayi boruları; istek üzerine değişik kalitede, sıcak haddelenmiş, dekape edilmiş veya soğuk haddelenmiş bantlardan yüzeyleri kromaj ve benzeri uygulamalara uygun şekilde üretilmektedir.",
+      "categoryId": 3,
+      "imageUrl": "/assets/img/product/profil-boru3.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Çelik Hasır",
+      "description": "Yatay ve dikey betonarme yapıların, betonarme altyapı ve üstyapı elemanlarının ana teçhizat malzemesidir.",
+      "categoryId": 4,
+      "imageUrl": "/assets/img/product/celik-hasir.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Çelik Hasır",
+      "description": "Yatay ve dikey betonarme yapıların, betonarme altyapı ve üstyapı elemanlarının ana teçhizat malzemesidir.",
+      "categoryId": 4,
+      "imageUrl": "/assets/img/product/celik-hasir2.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Çelik Hasır",
+      "description": "Yatay ve dikey betonarme yapıların, betonarme altyapı ve üstyapı elemanlarının ana teçhizat malzemesidir.",
+      "categoryId": 4,
+      "imageUrl": "/assets/img/product/celik-hasir3.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Köşebent / Lama / Kare",
+      "description": "Köşebent; endüstriyel tesisler, çelik konstrüksiyon yapılar, iş makineleri, tarım makineleri, metal ve sac işleme makineleri üretiminde ve viyadük, prefabrik yapı,köprü ve alt-üst geçit gibi projelerde yoğun olarak kullanılır.",
+      "categoryId": 5,
+      "imageUrl": "/assets/img/product/lama.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Köşebent / Lama / Kare",
+      "description": "Köşebent; endüstriyel tesisler, çelik konstrüksiyon yapılar, iş makineleri, tarım makineleri, metal ve sac işleme makineleri üretiminde ve viyadük, prefabrik yapı,köprü ve alt-üst geçit gibi projelerde yoğun olarak kullanılır.",
+      "categoryId": 5,
+      "imageUrl": "/assets/img/product/lama2.jpg"
+    },
+    {
+      "id": 18,
+      "name": "NPI/ NPU/ IPE/ HEA/ HEB",
+      "description": "INP (NPI)/ UNP (NPU) Profiller; endüstriyel yapılar ve çelik konstrüksiyon ağırıklı yapıların inşaasında kullanılır. Cok katlı binalar ve endüstriyel tesislerin yanı sıra iş makineleri, tarım makinaları, metal ve sac işleme makineleri ve enerji nakil hatlarında kullanılır. Viyadük, prefabrik yapı, hafif çelik yapılar, köprü ve alt üst geçitler geçit benzeri projelerde INP (NPI) ve UNP (NPU) profiller yoğun olarak kullanılır. ",
+      "categoryId": 6,
+      "imageUrl": "/assets/img/product/heb-hba.jpg"
+    },
+    {
+      "id": 18,
+      "name": "NPI/ NPU/ IPE/ HEA/ HEB",
+      "description": "INP (NPI)/ UNP (NPU) Profiller; endüstriyel yapılar ve çelik konstrüksiyon ağırıklı yapıların inşaasında kullanılır. Cok katlı binalar ve endüstriyel tesislerin yanı sıra iş makineleri, tarım makinaları, metal ve sac işleme makineleri ve enerji nakil hatlarında kullanılır. Viyadük, prefabrik yapı, hafif çelik yapılar, köprü ve alt üst geçitler geçit benzeri projelerde INP (NPI) ve UNP (NPU) profiller yoğun olarak kullanılır. ",
+      "categoryId": 6,
+      "imageUrl": "/assets/img/product/heb-hba2.jpg"
+    }
+  ],
+
+  "category": [
+    {
+      "id": 1,
+      "name": "İnşaat Demiri",
+      "icon": "bi-bricks"
+    },
+    {
+      "id": 2,
+      "name": "Filmaşin",
+      "icon": "bi-vignette"
+    },
+    {
+      "id": 3,
+      "name": "Profil ve Boru",
+      "icon": "bi-fullscreen-exit"
+    },
+    {
+      "id": 4,
+      "name": "Çelik Hasır",
+      "icon": "bi-columns-gap"
+    },
+    {
+      "id": 5,
+      "name": "Köşebent",
+      "icon": "bi-braces-asterisk"
+    },
+    {
+      "id": 6,
+      "name": "NPI/ NPU/ IPE/ HEA/ HEB",
+      "icon": "bi-braces-asterisk"
+    }
+  ],
+
+  "flatProducts": [
+    {
+      "title": "SICAK RULO / PAKET SAC",
+      "icon": "bi-activity",
+      "description": "Ağırlıklı olarak gemi inşa, enerji nakil hatları, boru ve profil üretimi, inşaat, otoyol bariyer ve levhaları,konteyner ve makine imalat sanayi gibi çeşitli alanlarda kullanılmaktadır."
+    },
+    {
+      "title": "SOĞUK RULO / DKP SAC",
+      "icon": "bi-broadcast",
+      "description": "Ağırlıklı olarak, otomotiv, mobilya, beyaz eşya, boru & profil, panel radyatör, inşaat & yapı malzemeleri, metal kalıplar başta olmak üzere endüstrinin birçok alanında kullanılmaktadır."
+    },
+    {
+      "title": "BAKLAVALI / GÖZYAŞI DESENLİ SAC",
+      "icon": "bi-easel",
+      "description": "Daha çok yangın merdivenleri, yürüme yolları, rampalar, makineler, ıslak zemin olabilecek gemi ve deniz kenarı tesisler ya da araçlar, kamyon ve tır kasaları, basamaklar, dolap kapakları, dekorasyon amaçlı dış cephe veya yer zemini kaplamaları olarak kullanılmaktadır."
+    },
+    {
+      "title": "SİYAH PAKET SAC",
+      "icon": "bi-bounding-box-circles",
+      "description": "1,20mm ile 25,00mm arası kalınlıklarda tüm genişlik ve kalitelerde üretilir. Makine sanayi, imalat sanayi, otomotiv sanayi, konstrüksiyon, gemi sanayi, savunma sanayi gibi sektörlerde kullanılmaktadır."
+    },
+    {
+      "title": "BOYALI SAC",
+      "icon": "bi-calendar4-week",
+      "description": "Soğuk haddelenmiş rulo sacların belli oranlarda galvaniz kaplama yapılmasının ardından polyester içeren boyalarla işleme tabi tutularak elde edilir. Boyalı Saclar gerek korozyona karşı dayanıklı olması gereksede estetik açıdan daha dekoratif durması sebebiyle tercih edilir. Çeşitli RAL renk kodları arasından kullanıcıların talebine göre üretimi yapılır. Renk farklılıklarına göre boyalı sac fiyatları değişkenlik gösterir."
+    },
+    {
+      "title": "GALVANİZLİ / TRAPEZ SAC",
+      "icon": "bi-calendar4-week",
+      "description": "Otomotiv, beyaz eşya, elektrik - elektronik, küçük ev aletleri, ıstıma ve soğutma, havalandırma, inşaat (PVC destek sacı, açık yapı profili) vb. alanlarda Galvanizli Rulo Sac ve Galvanizli Levha Sac kullanılmaktadır. Trapez ve Oluklu Sac; galvanizli sac ve boyalı sacdan imal edilir. Bu saclar ağırlıklı olarak inşaat sektöründe kullanılmaktadır. Isı yalıtımsız olarak tek kat trapez saclar daha çok çatılarda tercih edilirken, ısı yalıtımlı çift kat trapez saclar duvar uygulamalarında daha yoğun kullanılır."
+    }
+  ],
+
+  "contact": [
+    {
+      "type": "Adres",
+      "description": "Barbaros Mah. Ak Zambak Sok. Uphill Towers A Blok No:3/92 Ataşehir/İstanbul",
+      "icon": "bi-geo-alt flex-shrink-0"
+    },
+    {
+      "type": "Telefon",
+      "description": "+90 532 524 52 58",
+      "icon": "bi-geo-alt flex-shrink-0"
+    },
+    {
+      "type": "Email",
+      "description": "info@fersandemircelik.com",
+      "icon": "bi-envelope flex-shrink-0"
+    }
+  ],
+  "socialmedia": [
+    {
+      "id": 1,
+      "title": "Twitter",
+      "url": "https://x.com/",
+      "icon": "bi-twitter-x"
+    },
+    {
+      "id": 2,
+      "title": "Facebook",
+      "url": "https://facebook.com/",
+      "icon": "bi-facebook"
+    },
+    {
+      "id": 3,
+      "title": "Instagram",
+      "url": "https://instagram.com/",
+      "icon": "bi-instagram"
+    },
+    {
+      "id": 4,
+      "title": "Linkedin",
+      "url": "https://linkedin.com/",
+      "icon": "bi-linkedin"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+﻿@model StormEkspress.Models.UIModel.HomePageDto
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Hizmetlerimiz";
+    var breadcrumbs = ViewData["Breadcrumbs"] as List<Breadcrumb>;
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5" style="margin-bottom: 6rem;">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">@ViewData["Title"]</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                @foreach (var breadcrumb in breadcrumbs)
+                {
+                    @if (breadcrumb.IsActive)
+                    {
+                        <li class="breadcrumb-item active" aria-current="page">@breadcrumb.Text</li>
+                    }
+                    else
+                    {
+                        <li class="breadcrumb-item"><a href="@breadcrumb.Url">@breadcrumb.Text</a></li>
+                    }
+                }
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Service Start -->
+<div class="container-xxl py-5">
+    <div class="container py-5">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="text-secondary text-uppercase">Hizmetlerimiz</h6>
+            <h1 class="mb-5">Hizmetlerimizi Keşfedin</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4">
+                    <div class="overflow-hidden mb-4">
+                        <img class="img-fluid" src="~/assets/img/service-4.jpg" alt="">
+                    </div>
+                    <h4 class="mb-3">Paket Başı Kurye</h4>
+                    <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Detaylar</span></a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item p-4">
+                    <div class="overflow-hidden mb-4">
+                        <img class="img-fluid" src="~/assets/img/service-5.jpg" alt="">
+                    </div>
+                    <h4 class="mb-3">Gün içi Kurye</h4>
+                    <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Detaylar</span></a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="service-item p-4">
+                    <div class="overflow-hidden mb-4">
+                        <img class="img-fluid" src="~/assets/img/service-6.webp" alt="">
+                    </div>
+                    <h4 class="mb-3">Yaya Kurye</h4>
+                    <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Detaylar</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Service End -->
+<!-- Testimonial Start -->
+<section id="referanslarimiz" class="clients section">
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="text-center">
+                <h6 class="text-secondary text-uppercase">Referenslarımız</h6>
+                <h1 class="mb-0">Hizmet verdiğimiz mutlu müşterilerimiz</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel wow fadeInUp swiper-wrapper align-items-center">
+                @foreach (var item in Model.References)
+                {
+                    <div class="testimonial-item p-4 my-5">
+                        <div class="d-flex align-items-end mb-4 swiper-slide">
+                            <img src="@item.ImageUrl" alt="@item.Name" class="img-fluid lazyload" loading="lazy" />
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Testimonial End -->

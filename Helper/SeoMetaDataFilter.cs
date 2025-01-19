@@ -28,6 +28,8 @@ namespace StormEkspress.Helper
         {
             switch (url.ToLower())
             {
+                case "/":
+                    return "Anasayfa | Karabük'te Hızlı ve Güvenilir Kurye Hizmeti";
                 case "/hakkimizda":
                     return "Hakkımızda | Karabük'te Hızlı ve Güvenilir Kurye Hizmeti";
                 case "/iletisim":
@@ -49,6 +51,8 @@ namespace StormEkspress.Helper
         {
             switch (url.ToLower())
             {
+                case "/":
+                    return "Anasayfa | Karabük'te Hızlı ve Güvenilir Kurye Hizmeti websitemize hoşgeldiniz.";
                 case "/hakkimizda":
                     return "Hakkımızda sayfası, Karabük, Safranbolu ve çevresindeki restoranlar ve kafelere sunduğumuz hızlı kurye hizmetini tanıtıyor.";
                 case "/iletisim":

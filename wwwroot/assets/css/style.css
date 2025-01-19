@@ -10,6 +10,19 @@
     font-weight: 600 !important;
 }
 
+
+/* H1 stilini görsel olarak h5'e benzetmek */
+.custom-h1 {
+    font-size: 1.25rem; /* h5 boyutuna yakýn */
+    font-weight: normal; /* Kalýn yazý tipi */
+}
+
+/* H2 stilini görsel olarak h1'e benzetmek */
+.custom-h5 {
+    font-size: 2.5rem; /* h1 boyutuna yakýn */
+    font-weight: 500; /* Orta kalýnlýkta yazý tipi */
+}
+
 /*--------------------------------------------------------------
 # Scroll top button
 --------------------------------------------------------------*/
@@ -584,7 +597,3 @@
         background-color: blue;
     }
 
-.img-fluid {
-    max-width: 100%;
-    height: auto;
-}

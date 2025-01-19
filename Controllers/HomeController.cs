@@ -81,6 +81,7 @@ namespace StormEkspress.Controllers
             var breadcrumbJson = _breadcrumbService.GetBreadcrumbJson(breadcrumbs);
             ViewData["Breadcrumbs"] = breadcrumbs;
             ViewData["BreadcrumbJson"] = breadcrumbJson;
+            ViewData["PageTitle"] = "Hakkımızda";
             return View(model);
         }
 
@@ -93,6 +94,7 @@ namespace StormEkspress.Controllers
             var breadcrumbJson = _breadcrumbService.GetBreadcrumbJson(breadcrumbs);
             ViewData["Breadcrumbs"] = breadcrumbs;
             ViewData["BreadcrumbJson"] = breadcrumbJson;
+            ViewData["PageTitle"] = "Hizmetlerimiz";
             return View(model);
         }
 
@@ -114,7 +116,7 @@ namespace StormEkspress.Controllers
             ViewData["BreadcrumbJson"] = breadcrumbJson;
 
             model.ServiceDetail = service;
-
+            ViewData["PageTitle"] = "Hizmet Detaylarımız";
             return View(model); // Detay sayfasını render et
         }
 
@@ -127,6 +129,7 @@ namespace StormEkspress.Controllers
             var breadcrumbJson = _breadcrumbService.GetBreadcrumbJson(breadcrumbs);
             ViewData["Breadcrumbs"] = breadcrumbs;
             ViewData["BreadcrumbJson"] = breadcrumbJson;
+            ViewData["PageTitle"] = "İletişim";
             return View(model);
         }
         public IActionResult Privacy()

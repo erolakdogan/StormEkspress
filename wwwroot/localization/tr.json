@@ -2,7 +2,7 @@
   "siteSettings": {
     "siteTitle": "Storm Ekspress.",
     "siteDescription": "Storm Ekspress Karabük",
-    "seoDescription": "Yüksek kaliteli demir-çelik ürünleri ve hizmetleri  başta İstanbul olmak üzere ülkemizin her yerinde hizmet vermeye devam ediyoruz.",
+    "seoDescription": "Karabük ve Safranbolu'da hızlı ve güvenilir günlük kurye hizmeti sunuyoruz. Bartın, Kastamonu, Zonguldak gibi Batı Karadeniz illerine de en hızlı teslimat garantisi ile ulaşım sağlıyoruz. İşinizi kolaylaştıracak kurye çözümleri için bizimle iletişime geçin. Günlük teslimat ihtiyaçlarınızda %100 müşteri memnuniyeti garantisi!",
     "keywords": [ "1" ],
     "FooterCopyright": "Storm Ekspress. Tüm hakları saklıdır © {0}",
     "GoogleMapUrl": ""
@@ -45,7 +45,24 @@
     {
       "id": 3,
       "title": "Hizmetlerimiz",
-      "url": "/hizmetlerimiz"
+      "url": "/hizmetlerimiz",
+      "subMenu": [
+        {
+          "id": 1,
+          "title": "Paket Başı Kurye",
+          "url": "/hizmetlerimiz/paket-basi-kurye"
+        },
+        {
+          "id": 2,
+          "title": "Gün içi Kurye",
+          "url": "/hizmetlerimiz/gun-ici-kurye"
+        },
+        {
+          "id": 3,
+          "title": "Yaya Kurye",
+          "url": "/hizmetlerimiz/yaya-kurye"
+        }
+      ]
     },
     {
       "id": 4,
@@ -124,47 +141,46 @@
 
   "references": [
     {
-      "imageUrl": "/assets/img/references/kardemir.png",
-      "name": "Kardemir"
+      "imageUrl": "/assets/img/references/bursaiskender.webp",
+      "name": "Bursa İskender"
     },
     {
-      "imageUrl": "/assets/img/references/medikar.png",
-      "name": "Medikar"
+      "imageUrl": "/assets/img/references/eymen.webp",
+      "name": "Eymen Köfteci"
     },
     {
-      "imageUrl": "/assets/img/references/a.png",
-      "name": "a"
+      "imageUrl": "/assets/img/references/durumsever.webp",
+      "name": "Dürüm Sever"
     },
     {
-      "imageUrl": "/assets/img/references/b.png",
-      "name": "b"
-    },
-    {
-      "imageUrl": "/assets/img/references/c.png",
-      "name": "c"
-    },
-    {
-      "imageUrl": "/assets/img/references/d.png",
-      "name": "d"
-    },
-    {
-      "imageUrl": "/assets/img/references/e.png",
-      "name": "e"
-    },
-    {
-      "imageUrl": "/assets/img/references/f.png",
-      "name": "f"
-    },
-    {
-      "imageUrl": "/assets/img/references/g.png",
-      "name": "g"
-    },
-    {
-      "imageUrl": "/assets/img/references/h.png",
-      "name": "h"
+      "imageUrl": "/assets/img/references/lavinia.webp",
+      "name": "lavinia"
     }
   ],
 
+  "services": [
+    {
+      "name": "Paket Başı Kurye",
+      "slug": "paket-basi-kurye",
+      "description": "Bu hizmet sabit ücretle hızlı ve güvenilir teslimatlar sunar. Restoranlar ve kafeler için ideal olan tek bir paket için hızlı teslimat garantisi sağlar.",
+      "longDescription": "Paket başı kurye hizmetimiz, restoranlar ve kafeler için hızlı teslimatlar sağlar. Karabük, Safranbolu ve çevresindeki işletmeler için sunulan bu hizmet, her gönderi için sabit bir ücretlendirme sunar. Yemek siparişleri veya küçük eşyalar için uygun olan bu hizmet, teslimatları zamanında ve güvenli bir şekilde gerçekleştirir. Restoranlar ve kafeler için maliyetlerin kontrol edilmesine yardımcı olan bu hizmet, esnek teslimat saatleri ve düşük maliyetli taşıma seçenekleri sunar. Hızlı teslimat garantisiyle işletmelerin verimliliğini artırarak müşterilere kaliteli hizmet sunar.",
+      "imageUrl": "/assets/img/paket-basi-kurye-karabuk.webp"
+    },
+    {
+      "name": "Gün içi Kurye",
+      "slug": "gun-ici-kurye",
+      "description": "Gün içi Kurye hizmeti zamanla yarışan restoranlar ve kafeler için acil teslimat çözümleri sunar. Siparişler aynı gün içinde hızlıca teslim edilir.",
+      "longDescription": "Gün içi kurye hizmetimiz, Karabük ve Safranbolu'daki restoranlar ve kafeler için mükemmel bir çözüm sunar. Yoğun iş temposunda olan işletmeler için özel olarak tasarlanan bu hizmet, acil teslimatlarınızı aynı gün içinde hızlı bir şekilde gerçekleştirir. Restoranlar, kafeler ve diğer işletmeler için gün içi kurye hizmeti, zamanında teslimat garantisi sunarak verimliliği artırır. Sabah saatlerinden akşam geç saatlere kadar çalışarak teslimatlarınızı hızlı ve güvenli bir şekilde yapar. Taze malzemelerin veya acil ihtiyaçların hızlıca yerine ulaşmasını sağlar.",
+      "imageUrl": "/assets/img/gun-ici-kurye-safranbolu.webp"
+    },
+    {
+      "name": "Yaya Kurye",
+      "slug": "yaya-kurye",
+      "description": "Yaya kurye hizmeti, dar sokaklarda hızlı teslimatlar için ideal bir çözüm sunar. Çevreci ve etkili bir taşıma yöntemidir.Anlık ve hızlı çözümler için.",
+      "longDescription": "Yaya kurye hizmetimiz, özellikle Karabük ve Safranbolu gibi yoğun şehir içi bölgelerde hızlı teslimatlar için mükemmel bir tercihtir. Çevre dostu olan bu hizmet, dar sokaklarda ve trafiğin yoğun olduğu bölgelerde avantaj sağlar. Restoranlar, kafeler ve diğer işletmeler için, yaya kurye hizmeti, paketlerinizi hızla ve güvenli bir şekilde teslim eder. Yaya kurye, şehir içindeki kısa mesafeli teslimatlar için ideal olup, teslimatların zamanında yapılmasını garanti eder. Ayrıca çevreye duyarlı bir çözüm sunarak işletmenizin karbon ayak izini azaltmanıza yardımcı olur.",
+      "imageUrl": "/assets/img/yaya-kurye-karabuk.webp"
+    }
+  ],
   "products": [
     {
       "id": 1,

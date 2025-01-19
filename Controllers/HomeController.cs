@@ -39,6 +39,7 @@ namespace StormEkspress.Controllers
                 var menu = _configuration.GetSection("menu").Get<List<Menu>>();
                 var aboutUs = _configuration.GetSection("aboutUs").Get<About>();
                 var references = _configuration.GetSection("references").Get<List<Models.Reference>>();
+                var services = _configuration.GetSection("services").Get<List<Service>>();
 
                 model = new HomePageDto
                 {
@@ -48,6 +49,7 @@ namespace StormEkspress.Controllers
                     About = aboutUs,
                     References = references,
                     CurrentPath = currentPath,  // Bu kısmı her sayfaya özgü olarak ayarlayacağız
+                    Services = services,
                 };
 
                 // Cache'e veriyi ekleyin (3 saat boyunca saklanacak)
@@ -59,7 +61,6 @@ namespace StormEkspress.Controllers
 
             return model;
         }
-        // Index Action'ı
         public async Task<IActionResult> Index(string language = "tr")
         {
             var currentPath = Request.Path.ToString();
@@ -70,7 +71,7 @@ namespace StormEkspress.Controllers
             ViewData["BreadcrumbJson"] = breadcrumbJson;
             return View(model);
         }
-        // About Action'ı
+
         [Route("hakkimizda")]
         public async Task<IActionResult> About(string language = "tr")
         {
@@ -82,7 +83,7 @@ namespace StormEkspress.Controllers
             ViewData["BreadcrumbJson"] = breadcrumbJson;
             return View(model);
         }
-        // Services Action'ı
+
         [Route("hizmetlerimiz")]
         public async Task<IActionResult> Services(string language = "tr")
         {
@@ -94,7 +95,29 @@ namespace StormEkspress.Controllers
             ViewData["BreadcrumbJson"] = breadcrumbJson;
             return View(model);
         }
-        // Contact Action'ı
+
+        [Route("hizmetlerimiz/{slug}")]
+        public async Task<IActionResult> ServiceDetail(string slug, string language = "tr")
+        {
+            var currentPath = Request.Path.ToString();
+            var model = GetHomePageData(language, currentPath);
+            var service = model.Services.FirstOrDefault(s => s.Slug == slug);
+
+            if (service == null)
+            {
+                return NotFound(); // Hizmet bulunamazsa 404 döndür
+            }
+
+            var breadcrumbs = _breadcrumbService.GetBreadcrumbs(currentPath);
+            var breadcrumbJson = _breadcrumbService.GetBreadcrumbJson(breadcrumbs);
+            ViewData["Breadcrumbs"] = breadcrumbs;
+            ViewData["BreadcrumbJson"] = breadcrumbJson;
+
+            model.ServiceDetail = service;
+
+            return View(model); // Detay sayfasını render et
+        }
+
         [Route("iletisim")]
         public async Task<IActionResult> Contact(string language = "tr")
         {
@@ -106,7 +129,6 @@ namespace StormEkspress.Controllers
             ViewData["BreadcrumbJson"] = breadcrumbJson;
             return View(model);
         }
-
         public IActionResult Privacy()
         {
             return View();

@@ -14,17 +14,35 @@ namespace StormEkspress.Services
         public List<Breadcrumb> GetBreadcrumbs(string currentUrl)
         {
             var breadcrumbs = new List<Breadcrumb>
-        {
-            new Breadcrumb { Text = "Anasayfa", Url = "/" }
-        };
+             {
+              new Breadcrumb { Text = "Anasayfa", Url = "/" }
+             };
+
+            if (currentUrl.StartsWith("/hizmetlerimiz/"))
+            {
+                breadcrumbs.Add(new Breadcrumb { Text = "Hizmetlerimiz", Url = "/hizmetlerimiz" });
+            }
+
             string pageTitle = GetPageTitle(currentUrl);
-            // Aktif sayfa kontrolü: Eğer mevcut URL, menü öğesinin URL'siyle eşleşiyorsa, aktif olarak işaretle
+
             breadcrumbs.Add(new Breadcrumb
             {
                 Text = pageTitle,
                 Url = currentUrl,
                 IsActive = true
             });
+
+            for (int i = 0; i < breadcrumbs.Count; i++)
+            {
+                if (breadcrumbs[i].Url == currentUrl)
+                {
+                    breadcrumbs[i].IsActive = true;
+                }
+                else
+                {
+                    breadcrumbs[i].IsActive = false;
+                }
+            }
 
             return breadcrumbs;
         }
@@ -39,6 +57,12 @@ namespace StormEkspress.Services
                     return "İletişim";
                 case "/hizmetlerimiz":
                     return "Hizmetlerimiz";
+                case "/hizmetlerimiz/paket-basi-kurye":
+                    return "Paket Başı Kurye";
+                case "/hizmetlerimiz/gun-ici-kurye":
+                    return "Gün İçi Kurye";
+                case "/hizmetlerimiz/yaya-kurye":
+                    return "Yaya Kurye";
                 default:
                     return "Sayfa";  // Eğer başka bir sayfa ise "Sayfa" yazdırılır
             }

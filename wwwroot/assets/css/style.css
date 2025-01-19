@@ -384,15 +384,37 @@
 
 
 /*** Testimonial ***/
-.testimonial-carousel .owl-item .testimonial-item {
-    transition: .5s;
+#referanslarimiz {
+    padding: 60px 0; /* Üst ve alt boþluklarý arttýr */
+    background-color: #f8f9fa; /* Hafif bir arka plan rengi */
 }
 
-.testimonial-carousel .owl-item.center .testimonial-item {
-    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
-    animation: pulse 1s ease-out .5s;
+.testimonial-carousel {
+    display: flex;
+    justify-content: center; /* Ortalamak için */
+    flex-wrap: wrap; /* Sýralama yapýlacak */
+    gap: 30px; /* Elemanlar arasýndaki boþluk */
 }
 
+.testimonial-item {
+    display: flex;
+    justify-content: center; /* Her bir testi ortala */
+    align-items: center;
+    flex-direction: column; /* Ýçeriði dikeyde sýralar */
+    width: 250px; /* Sabit geniþlik verildi */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Metni ortalamak için */
+}
+
+    .testimonial-item img {
+        width: 150px; /* Sabit resim geniþliði */
+        height: 150px; /* Sabit resim yüksekliði */
+        object-fit: cover; /* Alaný dolduracak þekilde resim yerleþimi */
+        margin-bottom: 15px; /* Resim ile metin arasýna boþluk býrakma */
+    }
 .testimonial-carousel .owl-dots {
     display: flex;
     align-items: center;
@@ -443,7 +465,7 @@
 
 /*** Footer ***/
 .footer {
-    background: linear-gradient(rgba(6, 3, 21, .5), rgba(6, 3, 21, .5)), url(../img/map.png) center center no-repeat;
+    background: linear-gradient(rgba(6, 3, 21, .5), rgba(6, 3, 21, .5)), url(../img/map.webp) center center no-repeat;
     background-size: cover;
 }
 

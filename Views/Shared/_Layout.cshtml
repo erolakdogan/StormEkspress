@@ -50,7 +50,7 @@
 <body>
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
-        <a href="index.html" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
+        <a href="@Url.Action("Index", "Home")" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
             <img src="~/assets/img/logo.webp" alt="Logo" class="mb-2" style="max-height: 80px; object-fit: contain;">
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -63,7 +63,29 @@
                     var currentPathNormalized = Model.CurrentPath.TrimEnd('/');
                     var itemUrlNormalized = item.Url.TrimEnd('/');
 
-                    <a href="@item.Url" class="nav-item nav-link @(currentPathNormalized.Equals(itemUrlNormalized, StringComparison.OrdinalIgnoreCase) ? "active" : "")">@item.Title</a>
+                    if (item.Title == "Hizmetlerimiz" && item.SubMenu != null && item.SubMenu.Any())
+                    {
+                        <div class="nav-item dropdown">
+                            <a href="@item.Url" class="nav-link dropdown-toggle">
+                                @item.Title
+                            </a>
+                            <div class="dropdown-menu fade-up m-0">
+                                @foreach (var subItem in item.SubMenu)
+                                {
+                                    var subItemUrlNormalized = subItem.Url.TrimEnd('/');
+                                    <a href="@subItem.Url" class="dropdown-item @(currentPathNormalized.Equals(subItemUrlNormalized, StringComparison.OrdinalIgnoreCase) ? "active" : "")">
+                                        @subItem.Title
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    }
+                    else if (item.Title != "Hizmetlerimiz")
+                    {
+                        <a href="@item.Url" class="nav-item nav-link @(currentPathNormalized.Equals(itemUrlNormalized, StringComparison.OrdinalIgnoreCase) ? "active" : "")">
+                            @item.Title
+                        </a>
+                    }
                 }
             </div>
             <h4 class="m-0 pe-lg-5 d-none d-lg-block">
@@ -92,10 +114,10 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Address</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <h4 class="text-light mb-4">Adres</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Betim 1 İş Merkezi 12/A, Karabük, Türkiye</p>
+                    <a href="tel:05434267789" class="mb-2"><i class="fa fa-phone-alt me-3"></i>+90 543 426 7789</a>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@stormekspress.com</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -104,28 +126,20 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Services</h4>
-                    <a class="btn btn-link" href="">Air Freight</a>
-                    <a class="btn btn-link" href="">Sea Freight</a>
-                    <a class="btn btn-link" href="">Road Freight</a>
-                    <a class="btn btn-link" href="">Logistic Solutions</a>
-                    <a class="btn btn-link" href="">Industry solutions</a>
+                    <h4 class="text-light mb-4">Hizmetlerimiz</h4>
+                    @foreach (var item in Model.Services)
+                    {
+                        <a class="btn btn-link" href="/hizmetlerimiz/@item.Slug">@item.Name</a>
+                    }
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Quick Links</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Support</a>
+                    <h4 class="text-light mb-4">Hızlı Linkler</h4>
+                    <a class="btn btn-link" href="">Anasayfa</a>
+                    <a class="btn btn-link" href="@Url.Action("about")">Hakkımızda</a>
+                    <a class="btn btn-link" href="@Url.Action("services")">Hizmetlerimiz</a>
+                    <a class="btn btn-link" href="@Url.Action("contact")">İletişim</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Newsletter</h4>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -133,11 +147,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        Designed By <a class="border-bottom" href="">Storm Ekspress</a>
-                        </br>Distributed By <a class="border-bottom" href="" target="_blank">Storm Ekspress</a>
+                        &copy; <a class="border-bottom" href="#">Storm Ekspress</a>, Tüm hakları saklıdır.
                     </div>
                 </div>
             </div>

@@ -27,6 +27,7 @@
     </div>
 </div>
 <!-- Page Header End -->
+
 <!-- Service Start -->
 <div class="container-xxl py-5">
     <div class="container py-5">
@@ -35,40 +36,26 @@
             <h1 class="mb-5">Hizmetlerimizi Keşfedin</h1>
         </div>
         <div class="row g-4">
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item p-4">
-                    <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="~/assets/img/service-4.jpg" alt="">
+            <div class="row g-4">
+                @foreach (var item in Model.Services)
+                {
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="service-item p-4">
+                            <div class="overflow-hidden mb-4">
+                                <img class="img-fluid" src="@item.ImageUrl" alt="@item.Name">
+                            </div>
+                            <h4 class="mb-3">@item.Name</h4>
+                            <p>@item.Description</p>
+                            <a class="btn-slide mt-2" href="/hizmetlerimiz/@item.Slug"><i class="fa fa-arrow-right"></i><span>Detaylar</span></a>
+                        </div>
                     </div>
-                    <h4 class="mb-3">Paket Başı Kurye</h4>
-                    <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Detaylar</span></a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item p-4">
-                    <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="~/assets/img/service-5.jpg" alt="">
-                    </div>
-                    <h4 class="mb-3">Gün içi Kurye</h4>
-                    <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Detaylar</span></a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="service-item p-4">
-                    <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="~/assets/img/service-6.webp" alt="">
-                    </div>
-                    <h4 class="mb-3">Yaya Kurye</h4>
-                    <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Detaylar</span></a>
-                </div>
+                }
             </div>
         </div>
     </div>
 </div>
 <!-- Service End -->
+
 <!-- Testimonial Start -->
 <section id="referanslarimiz" class="clients section">
     <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">

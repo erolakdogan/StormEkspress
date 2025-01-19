@@ -10,5 +10,7 @@ namespace StormEkspress.Models.UIModel
         public List<Menu> Menu { get; set; }
         public About About { get; set; }
         public List<Reference> References { get; set; }
+        public List<Service> Services { get; set; }
+        public Service ServiceDetail { get; set; }
     }
 }

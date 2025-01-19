@@ -34,6 +34,12 @@ namespace StormEkspress.Helper
                     return "İletişim | Karabük'te Hızlı ve Güvenilir Kurye Hizmeti";
                 case "/hizmetlerimiz":
                     return "Hizmetlerimiz | Karabük'te Hızlı ve Güvenilir Kurye Hizmeti";
+                case "/hizmetlerimiz/paket-basi-kurye":
+                    return "Paket Başı Kurye | Karabük'te Hızlı ve Güvenilir Kurye Hizmeti";
+                case "/hizmetlerimiz/gun-ici-kurye":
+                    return "Gün İçi Kurye | Karabük'te Hızlı ve Güvenilir Kurye Hizmeti";
+                case "/hizmetlerimiz/yaya-kurye":
+                    return "Yaya Kurye | Karabük'te Hızlı ve Güvenilir Kurye Hizmeti";
                 default:
                     return "Sayfa | Karabük'te Hızlı ve Güvenilir Kurye Hizmeti";
             }
@@ -49,6 +55,12 @@ namespace StormEkspress.Helper
                     return "İletişim sayfası ile bizimle kolayca iletişim kurabilirsiniz.";
                 case "/hizmetlerimiz":
                     return "Hizmetlerimiz sayfası,  Karabük, Safranbolu ve çevresindeki restoranlar ve kafelere sunduğumuz hizmetlerin detaylarını içeriyor.";
+                case "/hizmetlerimiz/paket-basi-kurye":
+                    return "Paket Başı Kurye, küçük ve acil paketlerin hızlı teslimatı için ideal bir çözümdür.";
+                case "/hizmetlerimiz/gun-ici-kurye":
+                    return "Gün İçi Kurye, aynı gün içinde teslimat yaparak hızlı ve güvenilir hizmet sunar.";
+                case "/hizmetlerimiz/yaya-kurye":
+                    return "Yaya Kurye, şehir içindeki teslimatlar için çevreci ve hızlı bir alternatiftir.";
                 default:
                     return "Karabük, Safranbolu ve çevresindeki çevresindeki restoranlar ve kafelere sunduğumuz kurye hizmetini keşfedin.";
             }

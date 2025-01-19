@@ -38,6 +38,11 @@ app.MapControllerRoute(
     defaults: new { controller = "Home", action = "Services" });
 
 app.MapControllerRoute(
+    name: "serviceDetail",
+    pattern: "hizmetlerimiz/{slug}",
+    defaults: new { controller = "Home", action = "ServiceDetail" });
+
+app.MapControllerRoute(
     name: "contact",
     pattern: "iletisim",
     defaults: new { controller = "Home", action = "Contact" });

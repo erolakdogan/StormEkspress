@@ -26,7 +26,7 @@
     });
 
 
-    // Dropdown on mouse hover
+    // Dropdown on mouse hover ve tıklama
     const $dropdown = $(".dropdown");
     const $dropdownToggle = $(".dropdown-toggle");
     const $dropdownMenu = $(".dropdown-menu");
@@ -34,6 +34,7 @@
 
     $(window).on("load resize", function () {
         if (this.matchMedia("(min-width: 992px)").matches) {
+            // Hover işlevi
             $dropdown.hover(
                 function () {
                     const $this = $(this);
@@ -48,11 +49,29 @@
                     $this.find($dropdownMenu).removeClass(showClass);
                 }
             );
+
+            // Tıklama işlevi
+            $dropdownToggle.on("click", function (e) {
+                const $this = $(this);
+                const $parent = $this.parent();
+
+                // Toggle the 'show' class on click
+                $parent.toggleClass(showClass);
+
+                // Update aria-expanded
+                const isExpanded = $parent.hasClass(showClass);
+                $this.attr("aria-expanded", isExpanded);
+
+                // Preventing the link from navigating
+                e.preventDefault();
+            });
+
         } else {
+            // Eğer küçük ekran ise hover'ı kaldırıyoruz
             $dropdown.off("mouseenter mouseleave");
+            $dropdownToggle.off("click");
         }
     });
-
 
 
     /**

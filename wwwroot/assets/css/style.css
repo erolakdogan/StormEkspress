@@ -4,6 +4,37 @@
     --secondary: #51CFED;
     --light: #F8F2F0;
     --dark: #060315;
+    --bs-primary: #f2bd0a;
+}
+
+.text-primary {
+    color: #f2bd0a !important;
+}
+
+.border-primary {
+    border-color: #f2bd0a !important;
+}
+
+.bg-primary {
+    background-color: #f2bd0a !important;
+}
+
+a {
+    color: var(--bs-primary) ;
+}
+
+.text-secondary {
+    color: #2898cd !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--bs-primary) !important;
+    border-color: var(--bs-primary) !important;
+}
+
+.form-check-input[type="checkbox"]:indeterminate {
+    background-color: var(--bs-primary) !important;
+    border-color: var(--bs-primary) !important;
 }
 
 .fw-medium {

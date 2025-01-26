@@ -1,5 +1,7 @@
 using StormEkspress.Helper;
 using StormEkspress.Services;
+using StormEkspress.Services.Implementations;
+using StormEkspress.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +14,10 @@ builder.Services.AddControllersWithViews(options =>
 {
     options.Filters.Add(new SeoMetaDataFilter());
 });
-builder.Services.AddHttpClient();
 builder.Services.AddSingleton<BreadcrumbService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IFormService, FormService>();
+builder.Services.AddHttpClient();
 // Configuration ayarlarýný ekliyoruz (appsettings.json dosyasýndan)
 
 var app = builder.Build();
@@ -23,6 +27,8 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 
+app.UseMiddleware<ErrorHandlingMiddleware>();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
@@ -31,6 +37,16 @@ app.MapControllerRoute(
     name: "about",
     pattern: "hakkimizda",
     defaults: new { controller = "Home", action = "About" });
+
+app.MapControllerRoute(
+    name: "courierApplicationForm",
+    pattern: "basvuru/kurye",
+    defaults: new { controller = "Home", action = "CourierApplicationForm" });
+
+app.MapControllerRoute(
+    name: "restaurantApplicationForm",
+    pattern: "basvuru/restoran",
+    defaults: new { controller = "Home", action = "RestaurantApplicationForm" });
 
 app.MapControllerRoute(
     name: "services",

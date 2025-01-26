@@ -14,6 +14,19 @@
     "Description": "Karabük'ün her yerine teslimatlarınızı 7/24 hızlı ve güvenle teslim ediyoruz."
   },
 
+  "form": {
+    "KuryeBasvuruFormuTitle": "Kurye Başvuru Formu",
+    "KuryeBasvuruFormuDescription": "Kurye başvuru formu ile bize katılın.",
+    "RestoranBasvuruFormuTitle": "Restoran Başvuru Formu",
+    "RestoranBasvuruFormuDescription": "Restoran başvuru formu ile bize katılın.",
+    "SuccessTitle": "Başvuru Gönderildi",
+    "SuccessDescription": "Başvurunuz başarıyla alındı.",
+    "ErrorTitle": "Hata",
+    "ErrorDescription": "Bir hata oluştu.",
+    "EmailSendError": "E-posta gönderilirken bir hata oluştu.",
+    "UnexpectedError": "Beklenmeyen bir hata oluştu."
+  },
+
   "intro": [
     {
       "id": 1,
@@ -44,6 +57,23 @@
     },
     {
       "id": 3,
+      "title": "Başvuru",
+      "url": "/basvuru",
+      "subMenu": [
+        {
+          "id": 1,
+          "title": "Kurye Başvurusu",
+          "url": "/basvuru/kurye"
+        },
+        {
+          "id": 2,
+          "title": "Restoran Başvurusu",
+          "url": "/basvuru/restoran"
+        }
+      ]
+    },
+    {
+      "id": 4,
       "title": "Hizmetlerimiz",
       "url": "/hizmetlerimiz",
       "subMenu": [
@@ -65,7 +95,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": 5,
       "title": "İletişim",
       "url": "/iletisim"
     }

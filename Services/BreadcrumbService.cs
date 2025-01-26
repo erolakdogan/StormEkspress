@@ -53,6 +53,10 @@ namespace StormEkspress.Services
             {
                 case "/hakkimizda":
                     return "Hakkımızda";
+                case "/basvuru/restoran":
+                    return "Restoran Başvurusu";
+                case "/basvuru/kurye":
+                    return "Kurye Başvurusu";
                 case "/iletisim":
                     return "İletişim";
                 case "/hizmetlerimiz":

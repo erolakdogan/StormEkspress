@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using StormEkspress.Helper;
 using StormEkspress.Models;
+using StormEkspress.Models.Entities;
 using StormEkspress.Models.UIModel;
 using StormEkspress.Services;
+using StormEkspress.Services.Interfaces;
 
 namespace StormEkspress.Controllers
 {
@@ -17,14 +19,16 @@ namespace StormEkspress.Controllers
         private readonly IMemoryCache _memoryCache;
         private readonly HttpClient _httpClient;
         private readonly BreadcrumbService _breadcrumbService;
+        private readonly IFormService _formService;
 
-        public HomeController(ILogger<HomeController> logger,IConfiguration configuration,IMemoryCache memoryCache,HttpClient httpClient, BreadcrumbService breadcrumbService)
+        public HomeController(ILogger<HomeController> logger,IConfiguration configuration,IMemoryCache memoryCache,HttpClient httpClient, BreadcrumbService breadcrumbService, IFormService formService)
         {
             _logger = logger;
             _configuration = configuration;
             _memoryCache = memoryCache;
             _httpClient = httpClient;
             _breadcrumbService = breadcrumbService;
+            _formService = formService;
         }
         private HomePageDto GetHomePageData(string language, string currentPath)
         {
@@ -85,6 +89,113 @@ namespace StormEkspress.Controllers
             return View(model);
         }
 
+
+        [HttpGet("basvuru/kurye")]
+        public IActionResult CourierApplicationForm(string language = "tr")
+        {
+            ViewData["Title"] = "Kurye Başvuru Formu";
+            ViewData["Description"] = "Kurye başvuru formu ile bize katılın";
+            var currentPath = Request.Path.ToString();
+            var model = GetHomePageData(language, currentPath);
+            var breadcrumbs = _breadcrumbService.GetBreadcrumbs(currentPath);
+            var breadcrumbJson = _breadcrumbService.GetBreadcrumbJson(breadcrumbs);
+            ViewData["Breadcrumbs"] = breadcrumbs;
+            ViewData["BreadcrumbJson"] = breadcrumbJson;
+            return View(model);
+        }
+
+        [HttpPost("basvuru/kurye")]
+        public async Task<IActionResult> KuryeBasvuruFormu(CourierApplication application)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewData["Title"] = "Kurye Başvuru Formu";
+                ViewData["Description"] = "Kurye başvuru formu ile bize katılın";
+                return View(application); 
+            }
+
+            try
+            {
+                ViewData["Title"] = "Kurye Başvuru Formu";
+                ViewData["Description"] = "Kurye başvuru formu ile bize katılın";
+                await _formService.SubmitCourierApplication(application);
+                return RedirectToAction("Success");
+            }
+            catch (ValidationException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                ViewData["Title"] = "Kurye Başvuru Formu";
+                ViewData["Description"] = "Kurye başvuru formu ile bize katılın";
+                return View(application);
+            }
+            catch (EmailSendException ex)
+            {
+                ModelState.AddModelError(string.Empty, "E-posta gönderilirken bir hata oluştu");
+                ViewData["Title"] = "Kurye Başvuru Formu";
+                ViewData["Description"] = "Kurye başvuru formu ile bize katılın";
+                return View(application);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, "E-posta gönderilirken bir hata oluştu");
+                ViewData["Title"] = "Kurye Başvuru Formu";
+                ViewData["Description"] = "Kurye başvuru formu ile bize katılın";
+                return View(application);
+            }
+        }
+
+        [HttpGet("basvuru/restoran")]
+        public IActionResult RestaurantApplicationForm(string language = "tr")
+        {
+            ViewData["Title"] = "Restoran Başvuru Formu";
+            ViewData["Description"] = "Restoran başvuru formu ile bize katılın";
+            var currentPath = Request.Path.ToString();
+            var model = GetHomePageData(language, currentPath);
+            var breadcrumbs = _breadcrumbService.GetBreadcrumbs(currentPath);
+            var breadcrumbJson = _breadcrumbService.GetBreadcrumbJson(breadcrumbs);
+            ViewData["Breadcrumbs"] = breadcrumbs;
+            ViewData["BreadcrumbJson"] = breadcrumbJson;
+            return View(model);
+        }
+
+        [HttpPost("basvuru/restoran")]
+        public async Task<IActionResult> RestoranBasvuruFormu(RestaurantApplication application)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewData["Title"] = "Restoran Başvuru Formu";
+                ViewData["Description"] = "Restoran başvuru formu ile bize katılın";
+                return View(application); // Return the form with validation errors
+            }
+
+            try
+            {
+                await _formService.SubmitRestaurantApplication(application);
+                return RedirectToAction("Success");
+            }
+            catch (ValidationException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                ViewData["Title"] = "Restoran Başvuru Formu";
+                ViewData["Description"] = "Restoran başvuru formu ile bize katılın";
+                return View(application);
+            }
+            catch (EmailSendException ex)
+            {
+                ModelState.AddModelError(string.Empty, "E-posta gönderilirken bir hata oluştu.");
+                ViewData["Title"] = "Restoran Başvuru Formu";
+                ViewData["Description"] = "Restoran başvuru formu ile bize katılın";
+                return View(application);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, "Beklenmeyen bir hata oluştu.");
+                ViewData["Title"] = "Restoran Başvuru Formu";
+                ViewData["Description"] = "Restoran başvuru formu ile bize katılın";
+                return View(application);
+            }
+        }
+
         [Route("hizmetlerimiz")]
         public async Task<IActionResult> Services(string language = "tr")
         {
@@ -132,11 +243,13 @@ namespace StormEkspress.Controllers
             ViewData["PageTitle"] = "İletişim";
             return View(model);
         }
-        public IActionResult Privacy()
+
+        public IActionResult Success()
         {
             return View();
         }
 
+        [Route("error")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

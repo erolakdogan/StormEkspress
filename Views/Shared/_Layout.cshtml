@@ -82,7 +82,7 @@
                     var currentPathNormalized = Model.CurrentPath.TrimEnd('/');
                     var itemUrlNormalized = item.Url.TrimEnd('/');
 
-                    if (item.Title == "Hizmetlerimiz" && item.SubMenu != null && item.SubMenu.Any())
+                    if (item.SubMenu != null && item.SubMenu.Any())
                     {
                         <div class="nav-item dropdown">
                             <a href="@item.Url" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -155,6 +155,8 @@
                     <h4 class="text-light mb-4">Hızlı Linkler</h4>
                     <a class="btn btn-link" href="">Anasayfa</a>
                     <a class="btn btn-link" href="@Url.Action("about")">Hakkımızda</a>
+                    <a class="btn btn-link" href="@Url.Action("courierApplicationForm")">Kurye Başvuru</a>
+                    <a class="btn btn-link" href="@Url.Action("restaurantApplicationForm")">Restoran Başvuru</a>
                     <a class="btn btn-link" href="@Url.Action("services")">Hizmetlerimiz</a>
                     <a class="btn btn-link" href="@Url.Action("contact")">İletişim</a>
                 </div>

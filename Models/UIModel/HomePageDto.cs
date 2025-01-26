@@ -1,4 +1,5 @@
-﻿using System.Reflection.PortableExecutable;
+﻿using StormEkspress.Models.Entities;
+using System.Reflection.PortableExecutable;
 
 namespace StormEkspress.Models.UIModel
 {
@@ -12,5 +13,8 @@ namespace StormEkspress.Models.UIModel
         public List<Reference> References { get; set; }
         public List<Service> Services { get; set; }
         public Service ServiceDetail { get; set; }
+        public CourierApplication CourierApplicationForm { get; set; }
+        public RestaurantApplication RestaurantApplicationForm { get; set; }
+
     }
 }

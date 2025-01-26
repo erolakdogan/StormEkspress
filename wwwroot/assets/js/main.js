@@ -25,8 +25,7 @@
         }
     });
 
-
-    // Dropdown on mouse hover ve tıklama
+    // Dropdown on mouse hover (desktop) and click (mobile)
     const $dropdown = $(".dropdown");
     const $dropdownToggle = $(".dropdown-toggle");
     const $dropdownMenu = $(".dropdown-menu");
@@ -34,7 +33,7 @@
 
     $(window).on("load resize", function () {
         if (this.matchMedia("(min-width: 992px)").matches) {
-            // Hover işlevi
+            // Desktop: Hover functionality
             $dropdown.hover(
                 function () {
                     const $this = $(this);
@@ -50,29 +49,39 @@
                 }
             );
 
-            // Tıklama işlevi
+            // Remove click functionality for desktop
+            $dropdownToggle.off("click");
+        } else {
+            // Mobile: Click functionality
+            $dropdown.off("mouseenter mouseleave"); // Remove hover functionality
+
             $dropdownToggle.on("click", function (e) {
+                e.preventDefault(); // Prevent default link behavior
                 const $this = $(this);
                 const $parent = $this.parent();
 
-                // Toggle the 'show' class on click
+                // Toggle the 'show' class
                 $parent.toggleClass(showClass);
 
                 // Update aria-expanded
                 const isExpanded = $parent.hasClass(showClass);
                 $this.attr("aria-expanded", isExpanded);
 
-                // Preventing the link from navigating
-                e.preventDefault();
+                // Close other dropdowns when one is opened
+                $dropdown.not($parent).removeClass(showClass);
+                $dropdownToggle.not($this).attr("aria-expanded", "false");
             });
 
-        } else {
-            // Eğer küçük ekran ise hover'ı kaldırıyoruz
-            $dropdown.off("mouseenter mouseleave");
-            $dropdownToggle.off("click");
+            // Close dropdown when clicking outside
+            $(document).on("click", function (e) {
+                if (!$(e.target).closest($dropdown).length) {
+                    $dropdown.removeClass(showClass);
+                    $dropdownToggle.attr("aria-expanded", "false");
+                }
+            });
         }
     });
-
+  
 
     /**
      * Scroll top button

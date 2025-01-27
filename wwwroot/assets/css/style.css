@@ -1,10 +1,16 @@
 /********** Template CSS **********/
 :root {
-    --primary: #f2bd0a;
+ /*   --primary: #f2bd0a;
     --secondary: #51CFED;
     --light: #F8F2F0;
     --dark: #060315;
-    --bs-primary: #f2bd0a;
+    --bs-primary: #f2bd0a;*/
+
+    --primary: #e0ab00; /* Orijinal sarýdan daha kontrastlý (WCAG AA uyumlu) */
+    --secondary: #2F9EB8; /* Orijinal maviden daha derin ton */
+    --light: #F5ECE8; /* Hafif gri-pembe karýþýmý (göz yormaz) */
+    --dark: #0E0A2D; /* Orijinal siyah-mavidan daha okunabilir */
+    --bs-primary: #e0ab00; /* Primary ile uyumlu */
 }
 
 .text-primary {
@@ -628,3 +634,104 @@ a {
         background-color: blue;
     }
 
+@media (max-width: 767.98px) {
+    /* Mobilde input'larýn yazý boyutunu küçült */
+    .form-control-md {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    /* Mobilde buton içindeki ikonu küçült */
+    .btn-md .fa-paper-plane {
+        font-size: 0.9rem;
+    }
+}
+
+.mw-md-80 {
+    max-width: 80% !important;
+}
+
+@media (max-width: 768px) {
+    .mw-md-80 {
+        max-width: 95% !important;
+    }
+}
+
+/* Özel Buton Sistemi */
+.btn-custom {
+    --transition-duration: 0.2s;
+    --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    border: 2px solid transparent;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    overflow: hidden;
+    transition: background-color var(--transition-duration) var(--transition-ease), border-color var(--transition-duration) var(--transition-ease), transform var(--transition-duration) var(--transition-ease), box-shadow var(--transition-duration) var(--transition-ease);
+}
+
+/* Renk Temalarý */
+.btn-custom-1 {
+    --bg-color: #c29500; /* WCAG AAA kontrast saðlayan sarý */
+    --hover-color: #f2bd0a;
+    --text-color: #fff; /* Koyu mavi */
+
+    background-color: var(--bg-color);
+    border-color: var(--bg-color);
+    color: var(--text-color) !important;
+}
+
+.btn-custom-2 {
+    --bg-color: #268399; /* WCAG AA kontrastlý mavi */
+    --hover-color: #51CFED;
+    --text-color: #fff; /* Açýk renk */
+
+    background-color: var(--bg-color);
+    border-color: var(--bg-color);
+    color: var(--text-color) !important;
+}
+
+/* Etkileþim Durumlarý */
+.btn-custom:hover {
+    background-color: var(--hover-color) !important;
+    border-color: var(--hover-color) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-custom:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-custom:focus-visible {
+    outline: 3px solid var(--hover-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(47, 158, 184, 0.3);
+}
+
+/* Eriþilebilirlik için Yazý Boyutu */
+.btn-custom h3 {
+    font-size: clamp(1.125rem, 1.5vw + 1rem, 1.5rem);
+    line-height: 1.3;
+}
+
+/* Mobil Optimizasyon */
+@media (hover: none) and (pointer: coarse) {
+    .btn-custom:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .btn-custom {
+        min-height: 52px;
+        padding: 0.75rem !important;
+    }
+
+        .btn-custom h3 {
+            font-size: 1.125rem;
+        }
+}

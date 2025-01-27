@@ -44,6 +44,7 @@ namespace StormEkspress.Controllers
                 var aboutUs = _configuration.GetSection("aboutUs").Get<About>();
                 var references = _configuration.GetSection("references").Get<List<Models.Reference>>();
                 var services = _configuration.GetSection("services").Get<List<Service>>();
+                var features = _configuration.GetSection("features").Get<List<Feature>>();
 
                 model = new HomePageDto
                 {
@@ -54,6 +55,7 @@ namespace StormEkspress.Controllers
                     References = references,
                     CurrentPath = currentPath,  // Bu kısmı her sayfaya özgü olarak ayarlayacağız
                     Services = services,
+                    Features = features,
                 };
 
                 // Cache'e veriyi ekleyin (3 saat boyunca saklanacak)

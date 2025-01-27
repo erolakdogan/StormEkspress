@@ -14,5 +14,6 @@
         public string ContactSubTitle { get; set; }
         public string FooterCopyright { get; set; }
         public string GoogleMapUrl { get; set; }
+        public string ApplicationFormImageUrl { get; set; }
     }
 }

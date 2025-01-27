@@ -5,6 +5,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Restoran Başvuru Formu";
+    var sitesetting = Model.SiteSettings;
     var breadcrumbJson = ViewData["BreadcrumbJson"] as string;
     var pageTitle = ViewData["Title"] as string;
     var breadcrumbs = ViewData["Breadcrumbs"] as List<Breadcrumb>;
@@ -29,24 +30,79 @@
         </nav>
     </div>
 </div>
-<div class="container">
-    <h1>Restoran Başvuru Formu</h1>
-    <form method="post" asp-action="RestoranBasvuruFormu">
-        <div class="form-group">
-            <label>Restoran Adı</label>
-            <input asp-for="RestaurantApplicationForm.RestaurantName" class="form-control" />
-            <span asp-validation-for="RestaurantApplicationForm.RestaurantName" class="text-danger"></span>
+<div class="container py-3 py-md-5">
+    <div class="row">
+        <div class="col-12 col-lg-8 offset-lg-2">
+            <!-- Başlık ve Resim -->
+            <div class="text-center mb-4 mb-md-5">
+                <h1 class="display-5 display-md-4 mb-3 mb-md-4">Restoran Başvuru Formu</h1>
+                <img src="@Model.SiteSettings.ApplicationFormImageUrl"
+                     alt="Restoran Başvuru Resmi"
+                     class="img-fluid rounded shadow-lg"
+                     style="max-width: 100%; height: auto;">
+            </div>
+
+            <!-- Form -->
+            <div class="bg-light p-3 p-md-4 rounded shadow">
+                <form method="post" asp-action="RestoranBasvuruFormu">
+                    <!-- İşletme Adı -->
+                    <div class="form-group mb-3 mb-md-4">
+                        <label class="fw-bold">İşletme Adı *</label>
+                        <input asp-for="RestaurantApplicationForm.RestaurantName"
+                               class="form-control form-control-md form-control-lg-md"
+                               placeholder="İşletmenizin adını girin">
+                        <span asp-validation-for="RestaurantApplicationForm.RestaurantName" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Adres -->
+                    <div class="form-group mb-3 mb-md-4">
+                        <label class="fw-bold">Adres *</label>
+                        <input asp-for="RestaurantApplicationForm.Adress"
+                               class="form-control form-control-md form-control-lg-md"
+                               placeholder="Tam adresinizi girin">
+                        <span asp-validation-for="RestaurantApplicationForm.Adress" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Telefon -->
+                    <div class="form-group mb-3 mb-md-4">
+                        <label class="fw-bold">Telefon Numarası *</label>
+                        <input asp-for="RestaurantApplicationForm.Phone"
+                               class="form-control form-control-md form-control-lg-md"
+                               placeholder="5xx xxx xx xx">
+                        <span asp-validation-for="RestaurantApplicationForm.Phone" class="text-danger small"></span>
+                    </div>
+
+                    <!-- E-posta -->
+                    <div class="form-group mb-3 mb-md-4">
+                        <label class="fw-bold">E-posta</label>
+                        <input asp-for="RestaurantApplicationForm.Email"
+                               class="form-control form-control-md form-control-lg-md"
+                               placeholder="ornek@email.com">
+                        <span asp-validation-for="RestaurantApplicationForm.Email" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Çalışma Saatleri -->
+                    <div class="form-group mb-3 mb-md-4">
+                        <label class="fw-bold">Çalışma Saatleri</label>
+                        <input asp-for="RestaurantApplicationForm.WorkingHours"
+                               class="form-control form-control-md form-control-lg-md"
+                               placeholder="Örn: 09:00 - 23:00">
+                    </div>
+
+                    <!-- Gönder Butonu -->
+                    <div class="form-group mt-4 mt-md-5">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-md btn-lg-md px-3 px-md-5">
+                                <i class="fas fa-paper-plane me-2"></i> Gönder
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="form-group">
-            <label>E-mail</label>
-            <input asp-for="RestaurantApplicationForm.Email" class="form-control" />
-            <span asp-validation-for="RestaurantApplicationForm.Email" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label>Telefon Numarası</label>
-            <input asp-for="RestaurantApplicationForm.Phone" class="form-control" />
-            <span asp-validation-for="RestaurantApplicationForm.Phone" class="text-danger"></span>
-        </div>
-        <button type="submit" class="btn btn-primary">Gönder</button>
-    </form>
+    </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

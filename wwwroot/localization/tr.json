@@ -5,7 +5,8 @@
     "seoDescription": "Karabük ve Safranbolu'da hızlı ve güvenilir günlük kurye hizmeti sunuyoruz. Bartın, Kastamonu, Zonguldak gibi Batı Karadeniz illerine de en hızlı teslimat garantisi ile ulaşım sağlıyoruz. İşinizi kolaylaştıracak kurye çözümleri için bizimle iletişime geçin. Günlük teslimat ihtiyaçlarınızda %100 müşteri memnuniyeti garantisi!",
     "keywords": [ "1" ],
     "FooterCopyright": "Storm Ekspress. Tüm hakları saklıdır © {0}",
-    "GoogleMapUrl": ""
+    "GoogleMapUrl": "",
+    "ApplicationFormImageUrl": "/assets/img/karabuk-safranbolu-kurye-basvuru.webp"
   },
 
   "header": {
@@ -359,36 +360,32 @@
     }
   ],
 
-  "flatProducts": [
+  "features": [
     {
-      "title": "SICAK RULO / PAKET SAC",
-      "icon": "bi-activity",
-      "description": "Ağırlıklı olarak gemi inşa, enerji nakil hatları, boru ve profil üretimi, inşaat, otoyol bariyer ve levhaları,konteyner ve makine imalat sanayi gibi çeşitli alanlarda kullanılmaktadır."
+      "Type": "text",
+      "Icon": "fa-globe",
+      "H5": "Batı Karadeniz Bölgesi Geniş Hizmet Ağı",
+      "P": "Batı Karadeniz Bölgesinde Karabük ve Safranbolu başta olmak üzere...",
+      "WowDelay": "0.3s"
     },
     {
-      "title": "SOĞUK RULO / DKP SAC",
-      "icon": "bi-broadcast",
-      "description": "Ağırlıklı olarak, otomotiv, mobilya, beyaz eşya, boru & profil, panel radyatör, inşaat & yapı malzemeleri, metal kalıplar başta olmak üzere endüstrinin birçok alanında kullanılmaktadır."
+      "Type": "text",
+      "Icon": "fa-shipping-fast",
+      "H5": "Zamanında Teslimat",
+      "P": "Hızlı olmamız teminatımızda gizli...",
+      "WowDelay": "0.5s"
     },
     {
-      "title": "BAKLAVALI / GÖZYAŞI DESENLİ SAC",
-      "icon": "bi-easel",
-      "description": "Daha çok yangın merdivenleri, yürüme yolları, rampalar, makineler, ıslak zemin olabilecek gemi ve deniz kenarı tesisler ya da araçlar, kamyon ve tır kasaları, basamaklar, dolap kapakları, dekorasyon amaçlı dış cephe veya yer zemini kaplamaları olarak kullanılmaktadır."
+      "Type": "text",
+      "Icon": "fa-headphones",
+      "H5": "7/24 Müşteri Hizmetlerimiz",
+      "P": "Yakın zamanda faliyete girecek...",
+      "WowDelay": "0.7s"
     },
     {
-      "title": "SİYAH PAKET SAC",
-      "icon": "bi-bounding-box-circles",
-      "description": "1,20mm ile 25,00mm arası kalınlıklarda tüm genişlik ve kalitelerde üretilir. Makine sanayi, imalat sanayi, otomotiv sanayi, konstrüksiyon, gemi sanayi, savunma sanayi gibi sektörlerde kullanılmaktadır."
-    },
-    {
-      "title": "BOYALI SAC",
-      "icon": "bi-calendar4-week",
-      "description": "Soğuk haddelenmiş rulo sacların belli oranlarda galvaniz kaplama yapılmasının ardından polyester içeren boyalarla işleme tabi tutularak elde edilir. Boyalı Saclar gerek korozyona karşı dayanıklı olması gereksede estetik açıdan daha dekoratif durması sebebiyle tercih edilir. Çeşitli RAL renk kodları arasından kullanıcıların talebine göre üretimi yapılır. Renk farklılıklarına göre boyalı sac fiyatları değişkenlik gösterir."
-    },
-    {
-      "title": "GALVANİZLİ / TRAPEZ SAC",
-      "icon": "bi-calendar4-week",
-      "description": "Otomotiv, beyaz eşya, elektrik - elektronik, küçük ev aletleri, ıstıma ve soğutma, havalandırma, inşaat (PVC destek sacı, açık yapı profili) vb. alanlarda Galvanizli Rulo Sac ve Galvanizli Levha Sac kullanılmaktadır. Trapez ve Oluklu Sac; galvanizli sac ve boyalı sacdan imal edilir. Bu saclar ağırlıklı olarak inşaat sektöründe kullanılmaktadır. Isı yalıtımsız olarak tek kat trapez saclar daha çok çatılarda tercih edilirken, ısı yalıtımlı çift kat trapez saclar duvar uygulamalarında daha yoğun kullanılır."
+      "Type": "image",
+      "ImageUrl": "/assets/img/feature-karabuk-kurye-vizyon.webp",
+      "ImageAlt": "Karabük Kurye Hizmetleri"
     }
   ],
 

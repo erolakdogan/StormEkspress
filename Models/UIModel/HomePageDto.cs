@@ -15,6 +15,6 @@ namespace StormEkspress.Models.UIModel
         public Service ServiceDetail { get; set; }
         public CourierApplication CourierApplicationForm { get; set; }
         public RestaurantApplication RestaurantApplicationForm { get; set; }
-
+        public List<Feature> Features { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿@model StormEkspress.Models.UIModel.HomePageDto
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var service = Model.ServiceDetail;
+    var service = Model.Service;
     var breadcrumbJson = ViewData["BreadcrumbJson"] as string;
     var pageTitle = ViewData["Title"] as string;
     var breadcrumbs = ViewData["Breadcrumbs"] as List<Breadcrumb>;
@@ -48,13 +48,15 @@
                 <br />
                 <br />
                 <ul>
-                    <li><strong>İş hacminize dayalı esnek ödeme seçenekleri sunuyoruz</strong>, sabit bir bedel yerine ihtiyaçlarınıza uygun ödeme planlarıyla hizmet veriyoruz.</li>
-                    <li><strong>Geniş kapsamlı saha ekibimizle</strong>, hızlı, verimli ve kaliteli hizmeti kesintisiz olarak sağlıyoruz.</li>
-                    <li><strong>Paket servis hizmetimizde</strong>, müşterilerimize hiçbir sorumluluk veya ek iş yükü bırakmadan, tüm süreci biz yönetiyoruz.</li>
-                    <li><strong>Profesyonel saha ekibimiz</strong>, hızlı ve güvenli hizmet sunmak adına en yüksek standartlarda çalışmakta, siz değerli müşterilerimize en iyi deneyimi sağlamak için çaba göstermektedir.</li>
+                    @foreach (var item in Model.ServiceDetails)
+                    {
+                        <li>
+                            <strong>@item.BoldText</strong>, @item.Description
+                        </li>
+                    }
                 </ul>
                 <meta name="description" content="@service.Description" />
-                <meta name="keywords" content="@service.Name, Hizmet, Kurye" />
+                <meta name="keywords" content="@service.Name, Hizmet, Kurye,Karabük,Safranbolu, Batı Karadeniz" />
             </div>
         </div>
     </div>

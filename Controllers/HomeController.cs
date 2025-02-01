@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using StormEkspress.Helper;
@@ -6,6 +7,7 @@ using StormEkspress.Models;
 using StormEkspress.Models.Entities;
 using StormEkspress.Models.UIModel;
 using StormEkspress.Services;
+using StormEkspress.Services.Implementations;
 using StormEkspress.Services.Interfaces;
 
 namespace StormEkspress.Controllers
@@ -45,6 +47,12 @@ namespace StormEkspress.Controllers
                 var references = _configuration.GetSection("references").Get<List<Models.Reference>>();
                 var services = _configuration.GetSection("services").Get<List<Service>>();
                 var features = _configuration.GetSection("features").Get<List<Feature>>();
+                var formInfos = _configuration.GetSection("formInfo").Get<FormInfo>();
+                var teamMembers = _configuration.GetSection("teamMembers").Get<List<TeamMember>>();
+                var statistics = _configuration.GetSection("statistics").Get<List<Statistic>>();
+                var servicesDetails = _configuration.GetSection("servicesDeatil").Get<List<ServiceDetail>>();
+                var contactInfos = _configuration.GetSection("contact").Get<ContactInfo>();
+                var keywords = _configuration.GetSection("keywords").Get<List<string>>();
 
                 model = new HomePageDto
                 {
@@ -56,6 +64,12 @@ namespace StormEkspress.Controllers
                     CurrentPath = currentPath,  // Bu kısmı her sayfaya özgü olarak ayarlayacağız
                     Services = services,
                     Features = features,
+                    FormInfos = formInfos,
+                    TeamMembers = teamMembers,
+                    Statistics = statistics,
+                    ServiceDetails = servicesDetails,
+                    ContactInfo = contactInfos,
+                    Keywords = keywords,
                 };
 
                 // Cache'e veriyi ekleyin (3 saat boyunca saklanacak)
@@ -95,8 +109,6 @@ namespace StormEkspress.Controllers
         [HttpGet("basvuru/kurye")]
         public IActionResult CourierApplicationForm(string language = "tr")
         {
-            ViewData["Title"] = "Kurye Başvuru Formu";
-            ViewData["Description"] = "Kurye başvuru formu ile bize katılın";
             var currentPath = Request.Path.ToString();
             var model = GetHomePageData(language, currentPath);
             var breadcrumbs = _breadcrumbService.GetBreadcrumbs(currentPath);
@@ -107,20 +119,14 @@ namespace StormEkspress.Controllers
         }
 
         [HttpPost("basvuru/kurye")]
-        public async Task<IActionResult> KuryeBasvuruFormu(CourierApplication application)
+        public async Task<IActionResult> KuryeBasvuruFormu(HomePageDto model)
         {
-            if (!ModelState.IsValid)
-            {
-                ViewData["Title"] = "Kurye Başvuru Formu";
-                ViewData["Description"] = "Kurye başvuru formu ile bize katılın";
-                return View(application); 
-            }
-
             try
             {
                 ViewData["Title"] = "Kurye Başvuru Formu";
                 ViewData["Description"] = "Kurye başvuru formu ile bize katılın";
-                await _formService.SubmitCourierApplication(application);
+                var application = model.CourierApplicationForm;
+                await _formService.SubmitApplicationAsync(application, "Courier");
                 return RedirectToAction("Success");
             }
             catch (ValidationException ex)
@@ -128,21 +134,21 @@ namespace StormEkspress.Controllers
                 ModelState.AddModelError(string.Empty, ex.Message);
                 ViewData["Title"] = "Kurye Başvuru Formu";
                 ViewData["Description"] = "Kurye başvuru formu ile bize katılın";
-                return View(application);
+                return View(model);
             }
             catch (EmailSendException ex)
             {
                 ModelState.AddModelError(string.Empty, "E-posta gönderilirken bir hata oluştu");
                 ViewData["Title"] = "Kurye Başvuru Formu";
                 ViewData["Description"] = "Kurye başvuru formu ile bize katılın";
-                return View(application);
+                return View(model);
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, "E-posta gönderilirken bir hata oluştu");
                 ViewData["Title"] = "Kurye Başvuru Formu";
                 ViewData["Description"] = "Kurye başvuru formu ile bize katılın";
-                return View(application);
+                return View(model);
             }
         }
 
@@ -172,7 +178,7 @@ namespace StormEkspress.Controllers
 
             try
             {
-                await _formService.SubmitRestaurantApplication(application);
+                await _formService.SubmitApplicationAsync(application, "Restaurant");
                 return RedirectToAction("Success");
             }
             catch (ValidationException ex)
@@ -228,7 +234,7 @@ namespace StormEkspress.Controllers
             ViewData["Breadcrumbs"] = breadcrumbs;
             ViewData["BreadcrumbJson"] = breadcrumbJson;
 
-            model.ServiceDetail = service;
+            model.Service = service;
             ViewData["PageTitle"] = "Hizmet Detaylarımız";
             return View(model); // Detay sayfasını render et
         }
@@ -246,9 +252,16 @@ namespace StormEkspress.Controllers
             return View(model);
         }
 
-        public IActionResult Success()
+        public IActionResult Success(string language = "tr")
         {
-            return View();
+            var currentPath = Request.Path.ToString();
+            var model = GetHomePageData(language, currentPath);
+            var breadcrumbs = _breadcrumbService.GetBreadcrumbs(currentPath);
+            var breadcrumbJson = _breadcrumbService.GetBreadcrumbJson(breadcrumbs);
+            ViewData["Breadcrumbs"] = breadcrumbs;
+            ViewData["BreadcrumbJson"] = breadcrumbJson;
+            ViewData["PageTitle"] = "Başarılı";
+            return View(model);
         }
 
         [Route("error")]

@@ -3,7 +3,6 @@
     "siteTitle": "Storm Ekspress.",
     "siteDescription": "Storm Ekspress Karabük Kurye Hizmeti",
     "seoDescription": "Karabük ve Safranbolu'da hızlı ve güvenilir günlük kurye hizmeti sunuyoruz. Bartın, Kastamonu, Zonguldak gibi Batı Karadeniz illerine de en hızlı teslimat garantisi ile ulaşım sağlıyoruz. İşinizi kolaylaştıracak kurye çözümleri için bizimle iletişime geçin. Günlük teslimat ihtiyaçlarınızda %100 müşteri memnuniyeti garantisi!",
-    "keywords": [ "1" ],
     "FooterCopyright": "Storm Ekspress. Tüm hakları saklıdır © {0}",
     "GoogleMapUrl": "",
     "ApplicationFormImageUrl": "/assets/img/karabuk-safranbolu-kurye-basvuru.webp"
@@ -15,7 +14,10 @@
     "Description": "Karabük'ün her yerine teslimatlarınızı 7/24 hızlı ve güvenle teslim ediyoruz."
   },
 
-  "form": {
+  "formInfo": {
+    "FormContact": "Bizimle İletişime Geçin",
+    "FormContactTitle": "Sizlere Daha İyi Hizmet Verebilmek İçin Buradayız!",
+    "FormContactDescription": "Karabük, Safranbolu ve çevresindeki restoranlar ve kafeler için sunduğumuz hızlı kurye hizmetleri ile her zaman yanınızdayız. İletişim formumuzu doldurarak, her türlü soru, öneri veya hizmet taleplerinizle ilgili bizimle kolayca iletişime geçebilirsiniz. Restoranınızın ya da işletmenizin teslimat ihtiyaçları için özel çözümler sunuyoruz. Müşteri memnuniyetini ön planda tutarak, hızlı ve güvenli kurye hizmetlerimizi sizlere en iyi şekilde ulaştırmak için buradayız.",
     "KuryeBasvuruFormuTitle": "Kurye Başvuru Formu",
     "KuryeBasvuruFormuDescription": "Kurye başvuru formu ile bize katılın.",
     "RestoranBasvuruFormuTitle": "Restoran Başvuru Formu",
@@ -118,55 +120,31 @@
   "teamMembers": [
     {
       "id": 1,
-      "name": "",
-      "title": "",
-      "imageUrl": "",
-      "imageAlt": "",
-      "socialMedias": [
-        {
-          "icon": "",
-          "url": ""
-        }
-      ]
+      "name": "Musa Öcal G.",
+      "title": "Kurucu",
+      "imageUrl": "/assets/img/team-1.webp",
+      "imageAlt": "Karabük Safranbolu kurye hizmeti kurucusu"
     },
     {
       "id": 2,
-      "name": "",
-      "title": "",
-      "imageUrl": "",
-      "imageAlt": "",
-      "socialMedias": [
-        {
-          "icon": "",
-          "url": ""
-        }
-      ]
+      "name": "Erdem A",
+      "title": "Kurye",
+      "imageUrl": "/assets/img/team-2.webp",
+      "imageAlt": "Karabük Safranbolu kurye hizmeti"
     },
     {
       "id": 3,
-      "name": "",
-      "title": "",
-      "imageUrl": "",
-      "imageAlt": "",
-      "socialMedias": [
-        {
-          "icon": "",
-          "url": ""
-        }
-      ]
+      "name": "Fatih Y.",
+      "title": "Kurye",
+      "imageUrl": "/assets/img/team-3.webp",
+      "imageAlt": "Karabük Safranbolu kurye hizmeti"
     },
     {
       "id": 4,
-      "name": "",
-      "title": "",
-      "imageUrl": "",
-      "imageAlt": "",
-      "socialMedias": [
-        {
-          "icon": "",
-          "url": ""
-        }
-      ]
+      "name": "Enes B",
+      "title": "Kurye",
+      "imageUrl": "/assets/img/team-4.webp",
+      "imageAlt": "Karabük Safranbolu kurye hizmeti"
     }
   ],
 
@@ -212,7 +190,24 @@
       "imageUrl": "/assets/img/yaya-kurye-karabuk.webp"
     }
   ],
-
+  "servicesDeatil": [
+    {
+      "boldText": "İş hacminize dayalı esnek ödeme seçenekleri sunuyoruz",
+      "description": "Sabit bir bedel yerine ihtiyaçlarınıza uygun ödeme planlarıyla hizmet veriyoruz."
+    },
+    {
+      "boldText": "Geniş kapsamlı saha ekibimizle",
+      "description": "Hızlı, verimli ve kaliteli hizmeti kesintisiz olarak sağlıyoruz."
+    },
+    {
+      "boldText": "Paket servis hizmetimizde",
+      "description": "Müşterilerimize hiçbir sorumluluk veya ek iş yükü bırakmadan, tüm süreci biz yönetiyoruz."
+    },
+    {
+      "boldText": "Profesyonel saha ekibimiz",
+      "description": "Hızlı ve güvenli hizmet sunmak adına en yüksek standartlarda çalışmakta, siz değerli müşterilerimize en iyi deneyimi sağlamak için çaba göstermektedir."
+    }
+  ],
   "features": [
     {
       "Type": "text",
@@ -242,48 +237,39 @@
     }
   ],
 
-  "contact": [
+  "statistics": [
     {
-      "type": "Adres",
-      "description": "Barbaros Mah. Ak Zambak Sok. Uphill Towers A Blok No:3/92 Ataşehir/İstanbul",
-      "icon": "bi-geo-alt flex-shrink-0"
+      "title": "Mutlu Restoranlarımız",
+      "value": 24,
+      "icon": "fa-users",
+      "bgColor": "bg-primary",
+      "delay": 0.3
     },
     {
-      "type": "Telefon",
-      "description": "+90 532 524 52 58",
-      "icon": "bi-geo-alt flex-shrink-0"
+      "title": "Tamamlanan Paketler",
+      "value": 5000,
+      "icon": "fa-ship",
+      "bgColor": "bg-secondary",
+      "suffix": "+",
+      "delay": 0.5
     },
     {
-      "type": "Email",
-      "description": "info@fersandemircelik.com",
-      "icon": "bi-envelope flex-shrink-0"
+      "title": "Müşteri Yorumlarımız",
+      "value": 1280,
+      "icon": "fa-star",
+      "bgColor": "bg-success",
+      "delay": 0.7
     }
   ],
 
-  "socialmedia": [
-    {
-      "id": 1,
-      "title": "Twitter",
-      "url": "https://x.com/",
-      "icon": "bi-twitter-x"
-    },
-    {
-      "id": 2,
-      "title": "Facebook",
-      "url": "https://facebook.com/",
-      "icon": "bi-facebook"
-    },
-    {
-      "id": 3,
-      "title": "Instagram",
-      "url": "https://instagram.com/",
-      "icon": "bi-instagram"
-    },
-    {
-      "id": 4,
-      "title": "Linkedin",
-      "url": "https://linkedin.com/",
-      "icon": "bi-linkedin"
+  "contact": {
+    "address": "Betim 1 İş Merkezi 12/A, Karabük, Türkiye",
+    "phone": "+90 543 426 7789",
+    "email": "info@stormekspress.com",
+    "socialLinks": {
+      "instagram": "https://www.instagram.com/stormekspress/profilecard/?igsh=dDgyZGU5Z3M3ODFu",
+      "facebook": "https://www.facebook.com/share/1ZCx2tBUHn/?mibextid=wwXIfr",
+      "whatsapp": "https://wa.me/905434267789"
     }
-  ]
+  }
 }

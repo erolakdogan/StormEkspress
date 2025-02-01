@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // JSON dosyasýný Configuration'a dahil etme
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 builder.Configuration.AddJsonFile("wwwroot/localization/tr.json", optional: false, reloadOnChange: true);
-
+builder.Configuration.AddJsonFile("wwwroot/localization/keywords.json", optional: false, reloadOnChange: true);
 // DI container'a hizmetler ekleyin
 builder.Services.AddControllersWithViews(options =>
 {

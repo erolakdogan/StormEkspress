@@ -17,7 +17,7 @@
         </script>
     }
     <meta name="description" content="@ViewData["Description"]" />
-    <meta name="keywords" content="@string.Join(", ", Model.SiteSettings.Keywords)">
+    <meta name="keywords" content="@string.Join(", ", Model.Keywords)">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Storm Ekspress">
     <meta name="google-site-verification" content="ZwrDuSTn40chP7F4xo0ZeWa6gHs-IM6dRJH9L7Air4I" />
@@ -44,7 +44,7 @@
     <noscript>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
     </noscript>
-
+    
     <!-- Kritik CSS (Inline) -->
     <style>
         /* Minimal Bootstrap Reset */
@@ -84,7 +84,6 @@
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
         <link href="/assets/css/style.css" rel="stylesheet">
     </noscript>
-
     <!-- Kritik Olmayan CSS -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-10/css/all.min.css" as="style" onload="this.rel='stylesheet'">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" as="style" onload="this.rel='stylesheet'">
@@ -134,8 +133,8 @@
                 }
             </div>
             <h4 class="m-0 pe-lg-5 d-none d-lg-block">
-                <a href="tel:05434267789" style=" color: #060315 !important">
-                    <i class="fa fa-headphones text-primary me-3"></i>+90 543 426 7789
+                <a href="tel:@Model.ContactInfo.Phone" style=" color: #060315 !important">
+                    <i class="fa fa-headphones text-primary me-3"></i>@Model.ContactInfo.Phone
                 </a>
             </h4>
 
@@ -146,7 +145,7 @@
         @RenderBody()
     </main>
     <div class="footer-fixed-contact">
-        <a class="footer-fixed-contact-left" href="tel:05434267789">
+        <a class="footer-fixed-contact-left" href="tel:@Model.ContactInfo.Phone">
             <i class="fa-solid fa-phone"></i>
             Bizi Arayın
         </a>
@@ -161,14 +160,13 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Adres</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Betim 1 İş Merkezi 12/A, Karabük, Türkiye,</p>
-                    <a href="tel:05434267789" class="mb-2"><i class="fa fa-phone-alt me-3"></i>+90 543 426 7789</a>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@stormekspress.com</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>@Model.ContactInfo.Address</p>
+                    <a href="tel:@Model.ContactInfo.Phone" class="mb-2"><i class="fa fa-phone-alt me-3"></i>@Model.ContactInfo.Phone</a>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>@Model.ContactInfo.Email</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-social" target="_blank" href="@Model.ContactInfo.SocialLinks.Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-social" target="_blank" href="@Model.ContactInfo.SocialLinks.Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" target="_blank" href="@Model.ContactInfo.SocialLinks.Whatsapp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -195,7 +193,8 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Storm Ekspress</a>, Tüm hakları saklıdır.
+                        &copy; <a class="border-bottom" href="#">Storm Ekspress</a>, Tüm hakları saklıdır.</br>
+                        </br>Developer By <a class="border-bottom" href="https://instagram.com/eerolakdogan" target="_blank">LoreDesign</a>
                     </div>
                 </div>
             </div>
@@ -205,8 +204,7 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square scroll-top"><i class="bi bi-arrow-up"></i></a>
     <!-- JavaScript Dosyalarını Optimize Etme -->
-    <!-- JavaScript Optimizasyon -->
-    <!-- Layout.cshtml içinde Script Yükleme Sırasını Bu Şekilde Düzenleyin -->
+    
     <script>
         window.addEventListener('DOMContentLoaded', () => {
           const loadScript = (src, options = {}) => {
@@ -218,14 +216,8 @@
               script.crossOrigin = "anonymous";
             }
             return new Promise((resolve, reject) => {
-              script.onload = () => {
-                console.log(`${src} yüklendi!`);
-                resolve();
-              };
-              script.onerror = (err) => {
-                console.error(`${src} yüklenemedi!`, err);
-                reject(err);
-              };
+              script.onload = resolve;
+              script.onerror = reject;
               document.body.appendChild(script);
             });
           };
@@ -242,21 +234,16 @@
           .then(() => {
             // 2. WOW.JS'İ ÖNCELİKLİ YÜKLE
             return Promise.all([
-              loadScript('https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js'), // CDN Yedeği
-              loadScript('/assets/lib/wow/wow.js') // Lokal dosya
-            ]).catch(() => console.warn('WOW.js yüklenirken hata oluştu'));
+              loadScript('https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js'),
+              loadScript('/assets/lib/wow/wow.js')
+            ]).catch(() => {});
           })
           .then(() => {
             // 3. WOW.JS BAŞLATMA
             if(typeof WOW === 'function') {
               new WOW({
-                mobile: false,
-                callback: function(box) {
-                  console.log('WOW animasyon başladı:', box);
-                }
+                mobile: false
               }).init();
-            } else {
-              console.error('WOW fonksiyonu tanımlı değil!');
             }
 
             // 4. DİĞER BAĞIMLILIKLER
@@ -279,13 +266,48 @@
                 });
               });
             }
+
+            // 6. Carousel Ayarları
+            // Header Carousel
+            $(".header-carousel").owlCarousel({
+              autoplay: false,
+              smartSpeed: 1500,
+              items: 1,
+              dots: false,
+              loop: true,
+              nav: true,
+              navText: [
+                '<i class="bi bi-chevron-left"></i>',
+                '<i class="bi bi-chevron-right"></i>'
+              ]
+            });
+
+            // Testimonials Carousel
+            $(".testimonial-carousel").owlCarousel({
+              autoplay: false,
+              smartSpeed: 1000,
+              center: true,
+              dots: true,
+              loop: true,
+              responsive: {
+                0: {
+                  items: 1
+                },
+                768: {
+                  items: 2
+                },
+                992: {
+                  items: 3
+                }
+              }
+            });
           })
           .catch(error => {
-            console.error('Yükleme Hatası:', error);
+            // Hata loglamayı canlıda bırakmak istemiyorsanız burayı da temizleyebilirsiniz
           });
         });
     </script>
-
+   
     @RenderSection("Scripts", required: false) <!-- Burada Scripts section'ı render edilmesi sağlanır -->
 </body>
 </html>

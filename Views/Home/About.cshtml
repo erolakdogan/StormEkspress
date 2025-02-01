@@ -69,30 +69,34 @@
         <div class="row g-5">
             <div class="col-lg-6">
                 <div class="row g-4 align-items-center">
+                    <!-- İlk div içinde 2 öğe -->
                     <div class="col-sm-6">
-                        <div class="bg-primary p-4 mb-4 wow fadeIn" data-wow-delay="0.3s">
-                            <i class="fa fa-users fa-2x text-white mb-3"></i>
-                            <h2 class="text-white mb-2" data-toggle="counter-up">124</h2>
-                            <p class="text-white mb-0">Mutlu Müşteriler</p>
-                        </div>
-                        <div class="bg-secondary p-4 wow fadeIn" data-wow-delay="0.5s">
-                            <i class="fa fa-ship fa-2x text-white mb-3"></i>
-                            <h2 class="text-white mb-2">
-                                 <span data-toggle="counter-up">3333</span>
-                                 <span class="counter-suffix">+</span>
-                            </h2>
-                            <p class="text-white mb-0">Tamamlanan Paketler</p>
-                        </div>
+                        @foreach (var stat in Model.Statistics.Take(2))
+                        {
+                            <div class="@stat.BgColor p-4 mb-4 wow fadeIn" data-wow-delay="@($"{stat.Delay}s")">
+                                <i class="fa @stat.Icon fa-2x text-white mb-3"></i>
+                                <h2 class="text-white mb-2" data-toggle="counter-up">
+                                    @stat.Value
+                                </h2>
+                                <p class="text-white mb-0">@stat.Title</p>
+                            </div>
+                        }
                     </div>
+
+                    <!-- İkinci div içinde tek öğe -->
                     <div class="col-sm-6">
-                        <div class="bg-success p-4 wow fadeIn" data-wow-delay="0.7s">
-                            <i class="fa fa-star fa-2x text-white mb-3"></i>
-                            <h2 class="text-white mb-2" data-toggle="counter-up">1234</h2>
-                            <p class="text-white mb-0">Müşteri Yorumlarımız</p>
-                        </div>
+                        @foreach (var stat in Model.Statistics.Skip(2).Take(1))
+                        {
+                            <div class="@stat.BgColor p-4 mb-4 wow fadeIn" data-wow-delay="@($"{stat.Delay}s")">
+                                <i class="fa @stat.Icon fa-2x text-white mb-3"></i>
+                                <h2 class="text-white mb-2" data-toggle="counter-up">@stat.Value</h2>
+                                <p class="text-white mb-0">@stat.Title</p>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="text-secondary text-uppercase mb-3">@Model.About.WhyUs</h6>
                 <h1 class="mb-5">Müşteri Odaklı Çözümler</h1>
@@ -110,50 +114,18 @@
             <h1 class="mb-5">Kuryelerimiz</h1>
         </div>
         <div class="row g-4">
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="team-item p-4">
-                    <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="~/assets/img/team-1.webp" alt="">
+            @foreach (var member in Model.TeamMembers)
+            {
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="@($"{0.3 + 0.2 * Model.TeamMembers.IndexOf(member)}s")">
+                    <div class="team-item p-4">
+                        <div class="overflow-hidden mb-4">
+                            <img class="img-fluid" src="@member.ImageUrl" alt="@member.ImageAlt" width="928" height="491">
+                        </div>
+                        <h5 class="mb-0">@member.Name</h5>
+                        <p>@member.Title</p>
                     </div>
-                    <h5 class="mb-0">Musa Öcal G.</h5>
-                    <p>Kurucu</p>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="team-item p-4">
-                    <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="~/assets/img/team-2.webp" alt="">
-                    </div>
-                    <h5 class="mb-0">Erdem A.</h5>
-                    <p>Kurye</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="team-item p-4">
-                    <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="~/assets/img/team-3.webp" alt="">
-                    </div>
-                    <h5 class="mb-0">Fatih Y.</h5>
-                    <p>Kurye</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.9s">
-                <div class="team-item p-4">
-                    <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="~/assets/img/team-4.webp" alt="">
-                    </div>
-                    <h5 class="mb-0">Enes B.</h5>
-                    <p>Kurye</p>
-                    @* <div class="btn-slide mt-1">
-                        <i class="fa fa-share"></i>
-                        <span>
-                            <a href=""><i class="fab fa-facebook-f"></i></a>
-                            <a href=""><i class="fab fa-twitter"></i></a>
-                            <a href=""><i class="fab fa-instagram"></i></a>
-                        </span>
-                    </div> *@
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>

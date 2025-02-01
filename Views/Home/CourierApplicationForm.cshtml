@@ -61,7 +61,7 @@
                         <label class="fw-bold">Telefon Numarası *</label>
                         <input asp-for="CourierApplicationForm.Phone"
                                class="form-control form-control-md form-control-lg-md"
-                               placeholder="5xx xxx xx xx">
+                               placeholder="5xxxxxxxxx">
                         <span asp-validation-for="CourierApplicationForm.Phone" class="text-danger small"></span>
                     </div>
 
@@ -88,6 +88,14 @@
                         <input asp-for="CourierApplicationForm.Age"
                                class="form-control form-control-md form-control-lg-md"
                                placeholder="18-60 arası">
+                    </div>
+
+                    <!-- Sabıka Kaydı  -->
+                    <div class="form-group mb-3 mb-md-4">
+                        <label class="fw-bold">Sabika Kaydi</label>
+                        <input asp-for="CourierApplicationForm.RapSheet"
+                               class="form-control form-control-md form-control-lg-md"
+                               placeholder="Örn: Evet / Hayır">
                     </div>
 
                     <!-- Adres -->

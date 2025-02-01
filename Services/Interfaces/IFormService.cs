@@ -4,7 +4,6 @@ namespace StormEkspress.Services.Interfaces
 {
     public interface IFormService
     {
-        Task SubmitCourierApplication(CourierApplication application);
-        Task SubmitRestaurantApplication(RestaurantApplication application);
+        Task SubmitApplicationAsync(object application, string formType);
     }
 }

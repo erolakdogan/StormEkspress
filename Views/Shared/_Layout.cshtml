@@ -88,6 +88,14 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css" as="style" onload="this.media='all', this.rel='stylesheet'">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11.1.9/swiper.min.css" as="style" onload="this.rel='stylesheet'">
 
+    <!-- DNS Prefetch & Preconnect İpuçları -->
+    <link rel="dns-prefetch" href="https://code.jquery.com">
+    <link rel="preconnect" href="https://code.jquery.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
     @RenderSection("HeadContent", required: false)
 </head>
 <body>
@@ -201,71 +209,69 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square scroll-top"><i class="bi bi-arrow-up"></i></a>
     <!-- JavaScript Dosyalarını Optimize Etme -->
-
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-          const loadScript = (src, options = {}) => {
-            const script = document.createElement('script');
-            script.src = src;
-            script.defer = true;
-            if(options.integrity) {
-              script.integrity = options.integrity;
-              script.crossOrigin = "anonymous";
-            }
-            return new Promise((resolve, reject) => {
-              script.onload = resolve;
-              script.onerror = reject;
-              document.body.appendChild(script);
-            });
-          };
+        // loadScript fonksiyonunu tanımlıyoruz
+        const loadScript = (src, options = {}) => {
+          const script = document.createElement('script');
+          script.src = src;
+          script.defer = true;
+          if (options.integrity) {
+            script.integrity = options.integrity;
+            script.crossOrigin = "anonymous";
+          }
+          return new Promise((resolve, reject) => {
+            script.onload = resolve;
+            script.onerror = reject;
+            document.body.appendChild(script);
+          });
+        };
 
-          // 1. TEMEL BAĞIMLILIKLAR
-          Promise.all([
-            loadScript('https://code.jquery.com/jquery-3.6.4.min.js', {
-              integrity: 'sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8='
-            }),
-            loadScript('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js', {
-              integrity: 'sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8'
-            })
-          ])
-          .then(() => {
+        // Async/Await kullanarak bağımlılıkları sırayla yükleyen fonksiyon
+        window.addEventListener('DOMContentLoaded', async () => {
+          try {
+            // 1. TEMEL BAĞIMLILIKLAR
+            await Promise.all([
+              loadScript('https://code.jquery.com/jquery-3.6.4.min.js', {
+                integrity: 'sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8='
+              }),
+              loadScript('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js', {
+                integrity: 'sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8'
+              })
+            ]);
+
             // 2. WOW.JS'İ ÖNCELİKLİ YÜKLE
-            return Promise.all([
-              loadScript('https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js'),
-              loadScript('/assets/lib/wow/wow.js')
-            ]).catch(() => {});
-          })
-          .then(() => {
-            // 3. WOW.JS BAŞLATMA
-            if(typeof WOW === 'function') {
-              new WOW({
-                mobile: false
-              }).init();
+            try {
+              await Promise.all([
+                loadScript('https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js'),
+                loadScript('/assets/lib/wow/wow.js')
+              ]);
+            } catch (e) {
+              // WOW.js yüklemesinde hata alınırsa buraya düşer
+              console.warn("WOW.js yüklemesinde hata:", e);
             }
 
-            // 4. DİĞER BAĞIMLILIKLER
-            return Promise.all([
+            // 3. WOW.JS BAŞLATMA
+            if (typeof WOW === 'function') {
+              new WOW({ mobile: false }).init();
+            }
+
+            // 4. DİĞER BAĞIMLILIKLAR
+            await Promise.all([
               loadScript('https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js'),
               loadScript('/assets/js/main.js')
             ]);
-          })
-          .then(() => {
+
             // 5. SAYFAYA ÖZEL AYARLAR
-            if(document.querySelector('[data-toggle="counter-up"]')) {
-              Promise.all([
+            if (document.querySelector('[data-toggle="counter-up"]')) {
+              await Promise.all([
                 loadScript('https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js'),
                 loadScript('https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js'),
                 loadScript('https://cdn.jsdelivr.net/npm/jquery.counterup@2.1.0/jquery.counterup.min.js')
-              ]).then(() => {
-                $('[data-toggle="counter-up"]').counterUp({
-                  delay: 10,
-                  time: 2000
-                });
-              });
+              ]);
+              $('[data-toggle="counter-up"]').counterUp({ delay: 10, time: 2000 });
             }
 
             // 6. Carousel Ayarları
-            // Header Carousel
             $(".header-carousel").owlCarousel({
               autoplay: false,
               smartSpeed: 1500,
@@ -279,7 +285,6 @@
               ]
             });
 
-            // Testimonials Carousel
             $(".testimonial-carousel").owlCarousel({
               autoplay: false,
               smartSpeed: 1000,
@@ -287,21 +292,14 @@
               dots: true,
               loop: true,
               responsive: {
-                0: {
-                  items: 1
-                },
-                768: {
-                  items: 2
-                },
-                992: {
-                  items: 3
-                }
+                0: { items: 1 },
+                768: { items: 2 },
+                992: { items: 3 }
               }
             });
-          })
-          .catch(error => {
-            // Hata loglamayı canlıda bırakmak istemiyorsanız burayı da temizleyebilirsiniz
-          });
+          } catch (error) {
+            console.error('Script yüklemesinde hata oluştu:', error);
+          }
         });
     </script>
 

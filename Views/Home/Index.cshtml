@@ -26,26 +26,29 @@
         });
     </script>
 }
-<head>
+@section HeadContent {
     @foreach (var item in Model.Intro)
     {
         <link rel="preload" href="@item.ImageUrl" as="image" type="image/webp">
     }
-</head>
+}
 <!-- Carousel Start -->
 <div class="container-fluid p-0 pb-5">
     <div class="owl-carousel header-carousel position-relative mb-5" data-carousel="header">
-        @foreach (var item in Model.Intro)
+        @for (int i = 0; i < Model.Intro.Count; i++)
         {
+            var item = Model.Intro[i];
+            // İlk öğe için lazy loading devredışı, diğerleri için lazy
+            var loadingAttr = i == 0 ? "" : "loading=\"lazy\"";
             <div class="owl-carousel-item position-relative">
                 <img class="img-fluid"
                      src="@item.ImageUrl"
                      alt="@item.ImageAlt"
-                     loading="lazy"
+                @Html.Raw(loadingAttr)
                      width="1903"
                      height="1070"
                      sizes="(max-width: 768px) 100vw, 1903px"
-                     srcset="@item.ImageUrl 1903w,  @item.ImageUrl.Replace(".webp", "-768w.webp") 768w, @item.ImageUrl.Replace(".webp", "-480w.webp") 480w">
+                     srcset="@item.ImageUrl 1903w, @item.ImageUrl.Replace(".webp", "-768w.webp") 768w, @item.ImageUrl.Replace(".webp", "-480w.webp") 480w">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
                     <div class="container">
                         <div class="row justify-content-start">
@@ -60,17 +63,20 @@
         }
     </div>
 </div>
+
+
+
 <!-- About Start -->
-<div class="container-fluid overflow-hidden  px-lg-0">
-    <div class="container about  px-lg-0">
+<div class="container-fluid overflow-hidden px-lg-0">
+    <div class="container about px-lg-0">
         <div class="row g-5 mx-lg-0">
             <div class="col-lg-6 ps-lg-0 wow fadeInLeft" data-wow-delay="0.1s" style="min-height: 400px;">
                 <div class="position-relative h-100">
                     <img class="position-absolute img-fluid"
-                         src=@Model.About.MissionImageUrl
-                         style="width:100%;height:100%;object-fit:scale-down"
-                         alt=@Model.About.MissionImageAlt
-                         >
+                         src="@Model.About.MissionImageUrl"
+                         alt="@Model.About.MissionImageAlt"
+                         width="600" height="400"
+                         style="width:100%; height:100%; object-fit:contain">
                 </div>
             </div>
             <div class="col-lg-6 about-text wow fadeInUp" data-wow-delay="0.3s">
@@ -81,10 +87,10 @@
                     <i class="fa fa-arrow-right"></i><span>Devamını oku</span>
                 </a>
             </div>
-
         </div>
     </div>
 </div>
+
 <!-- About End -->
 <!-- Service Start -->
 <div class="container-xxl py-5">

@@ -60,6 +60,15 @@ a {
     font-weight: 500; /* Orta kalýnlýkta yazý tipi */
 }
 
+@media (max-width: 768px) {
+    .custom-h1 {
+        font-size: 1rem;
+    }
+
+    .custom-h5 {
+        font-size: 1.2rem;
+    }
+}
 /*--------------------------------------------------------------
 # Scroll top button
 --------------------------------------------------------------*/
@@ -734,4 +743,44 @@ a {
         .btn-custom h3 {
             font-size: 1.125rem;
         }
+}
+
+.counter-suffix {
+    font-size: 0.8em;
+}
+
+/* WOW.js Animasyon Gecikmeleri */
+[data-wow-delay="0.3s"] {
+    animation-delay: 0.3s !important;
+}
+
+[data-wow-delay="0.5s"] {
+    animation-delay: 0.5s !important;
+}
+
+[data-wow-delay="0.7s"] {
+    animation-delay: 0.7s !important;
+}
+
+/* Opacity Reset */
+.wow {
+    opacity: 1 !important; /* WOW.js'in opacity'yi sýfýrlamasýný engelle */
+}
+
+.carousel-fallback {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 15px;
+    scrollbar-width: thin;
+}
+
+    .carousel-fallback > * {
+        flex: 0 0 80%;
+        scroll-snap-align: start;
+    }
+
+@media (min-width: 768px) {
+    .carousel-fallback > * {
+        flex-basis: 45%;
+    }
 }

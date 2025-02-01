@@ -34,7 +34,7 @@
 </head>
 <!-- Carousel Start -->
 <div class="container-fluid p-0 pb-5">
-    <div class="owl-carousel header-carousel position-relative mb-5">
+    <div class="owl-carousel header-carousel position-relative mb-5" data-carousel="header">
         @foreach (var item in Model.Intro)
         {
             <div class="owl-carousel-item position-relative">
@@ -82,7 +82,6 @@
     </div>
 </div>
 <!-- About End -->
-
 <!-- Service Start -->
 <div class="container-xxl py-5">
     <div class="container py-5">
@@ -116,7 +115,6 @@
     </div>
 </div>
 <!-- Service End -->
-
 <!-- Feature Start -->
 <div class="container-fluid overflow-hidden py-5 px-lg-0">
     <div class="container feature py-5 px-lg-0">
@@ -125,7 +123,7 @@
             <div class="col-lg-6 feature-text wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="text-secondary text-uppercase mb-3">Yetkinliklerimiz</h6>
                 <h1 class="mb-5">En Güçlü yanımız sizin talepleriniz bizim için çok önemli</h1>
-                
+
                 @foreach (var feature in Model.Features.Where(f => f.Type == "text"))
                 {
                     <div class="d-flex mb-5 wow fadeInUp" data-wow-delay="@feature.WowDelay">
@@ -157,7 +155,6 @@
     </div>
 </div>
 <!-- Feature End -->
-
 <!-- Quote Start -->
 <div class="container-xxl py-5">
     <div class="container py-5">
@@ -257,7 +254,6 @@
     </div>
 </div>
 <!-- Team End -->
-
 <!-- Testimonial Start -->
 <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container py-5">
@@ -265,7 +261,7 @@
             <h6 class="text-secondary text-uppercase mb-3">Referenslarımız</h6>
             <h1 class="mb-0">Hizmet verdiğimiz mutlu müşterilerimiz</h1>
         </div>
-        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s" data-carousel="testimonial">
             @foreach (var item in Model.References)
             {
                 <div class="testimonial-item p-4 my-5">

@@ -77,8 +77,10 @@
                         </div>
                         <div class="bg-secondary p-4 wow fadeIn" data-wow-delay="0.5s">
                             <i class="fa fa-ship fa-2x text-white mb-3"></i>
-                            <h2 class="text-white mb-2" data-toggle="counter-up" style="display: inline;">3333</h2>
-                            <h2 class="text-white mb-2" style="display: inline;">+</h2>
+                            <h2 class="text-white mb-2">
+                                 <span data-toggle="counter-up">3333</span>
+                                 <span class="counter-suffix">+</span>
+                            </h2>
                             <p class="text-white mb-0">Tamamlanan Paketler</p>
                         </div>
                     </div>
@@ -156,3 +158,16 @@
     </div>
 </div>
 <!-- Team End -->
+@section Scripts {
+    <script>
+        // WOW.js Yeniden Başlatma
+        document.addEventListener('DOMContentLoaded', function() {
+            if(typeof WOW !== 'undefined') {
+                new WOW({
+                    offset: 100,
+                    mobile: false
+                }).init();
+            }
+        });
+    </script>
+}

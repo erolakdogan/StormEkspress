@@ -12,10 +12,6 @@
     spinner();
 
 
-    // Initiate the wowjs
-    new WOW().init();
-
-
     // Sticky Navbar
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
@@ -99,14 +95,6 @@
         }));
     }
 
-    // Facts counter
-    $('[data-toggle="counter-up"]').counterUp({
-        delay: 10,
-        time: 2000
-    });
-
-
-    // Header carousel
     $(".header-carousel").owlCarousel({
         autoplay: false,
         smartSpeed: 1500,

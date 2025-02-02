@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Cors.Infrastructure;
+using System.Xml.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using StormEkspress.Helper;
@@ -7,7 +7,6 @@ using StormEkspress.Models;
 using StormEkspress.Models.Entities;
 using StormEkspress.Models.UIModel;
 using StormEkspress.Services;
-using StormEkspress.Services.Implementations;
 using StormEkspress.Services.Interfaces;
 
 namespace StormEkspress.Controllers
@@ -23,7 +22,7 @@ namespace StormEkspress.Controllers
         private readonly BreadcrumbService _breadcrumbService;
         private readonly IFormService _formService;
 
-        public HomeController(ILogger<HomeController> logger,IConfiguration configuration,IMemoryCache memoryCache,HttpClient httpClient, BreadcrumbService breadcrumbService, IFormService formService)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IMemoryCache memoryCache, HttpClient httpClient, BreadcrumbService breadcrumbService, IFormService formService)
         {
             _logger = logger;
             _configuration = configuration;
@@ -302,5 +301,56 @@ namespace StormEkspress.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [Route("sitemap.xml")]
+        [ResponseCache(Duration = 3600, Location = ResponseCacheLocation.Any)]
+        public async Task<IActionResult> GenerateSitemap()
+        {
+            var baseUrl = $"{Request.Scheme}://{Request.Host.Value.TrimEnd('/')}";
+
+            var services = GetHomePageData("tr", "/").Services;
+
+            var urls = new List<SitemapUrl>
+            {
+                new($"{baseUrl}/", DateTime.UtcNow, "always", 1.0),
+                new($"{baseUrl}/hakkimizda", DateTime.UtcNow, "monthly", 0.8),
+                new($"{baseUrl}/hizmetlerimiz", DateTime.UtcNow, "monthly", 0.9),
+                new($"{baseUrl}/iletisim", DateTime.UtcNow, "monthly", 0.7),
+                new($"{baseUrl}/success", DateTime.UtcNow, "monthly", 0.5)
+            };
+
+            // Hizmet detay sayfaları
+            urls.AddRange(services.Select(service =>
+                new SitemapUrl(
+                    $"{baseUrl}/hizmetlerimiz/{service.Slug}",
+                    DateTime.UtcNow, // UpdatedDate yerine UtcNow kullanıldı
+                    "weekly",
+                    0.7)
+            ));
+
+            // XML oluşturma
+            var xml = new XDocument(
+                new XDeclaration("1.0", "utf-8", "yes"),
+                new XElement("urlset",
+                    new XAttribute("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9"),
+                    urls.Select(url => new XElement("url",
+                        new XElement("loc", url.Url),
+                        new XElement("lastmod", url.LastModified.ToString("yyyy-MM-ddTHH:mm:sszzz")),
+                        new XElement("changefreq", url.ChangeFrequency),
+                        new XElement("priority", url.Priority.ToString("0.0"))
+                    ))
+                )
+            );
+
+            return Content(xml.ToString(), "text/xml; charset=utf-8");
+        }
+
+        public record SitemapUrl(
+            string Url,
+            DateTime LastModified,
+            string ChangeFrequency,
+            double Priority
+        );
+
     }
 }

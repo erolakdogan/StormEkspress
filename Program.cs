@@ -4,12 +4,9 @@ using StormEkspress.Services.Implementations;
 using StormEkspress.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// JSON dosyasýný Configuration'a dahil etme
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 builder.Configuration.AddJsonFile("wwwroot/localization/tr.json", optional: false, reloadOnChange: true);
 builder.Configuration.AddJsonFile("wwwroot/localization/keywords.json", optional: false, reloadOnChange: true);
-// DI container'a hizmetler ekleyin
 builder.Services.AddControllersWithViews(options =>
 {
     options.Filters.Add(new SeoMetaDataFilter());
@@ -18,7 +15,6 @@ builder.Services.AddSingleton<BreadcrumbService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IFormService, FormService>();
 builder.Services.AddHttpClient();
-// Configuration ayarlarýný ekliyoruz (appsettings.json dosyasýndan)
 
 var app = builder.Build();
 
@@ -62,5 +58,10 @@ app.MapControllerRoute(
     name: "contact",
     pattern: "iletisim",
     defaults: new { controller = "Home", action = "Contact" });
+
+app.MapControllerRoute(
+    name: "sitemap",
+    pattern: "sitemap.xml",
+    defaults: new { controller = "Home", action = "GenerateSitemap" });
 
 app.Run();

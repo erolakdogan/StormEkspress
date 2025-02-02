@@ -14,6 +14,25 @@
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HV2K5K4P9B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-HV2K5K4P9B');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-T42NZJRQ');</script>
+    <!-- End Google Tag Manager -->
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@pageTitle</title>
@@ -32,7 +51,6 @@
     <meta name="keywords" content="@string.Join(", ", Model.Keywords)">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Storm Ekspress">
-    <meta name="google-site-verification" content="ZwrDuSTn40chP7F4xo0ZeWa6gHs-IM6dRJH9L7Air4I" />
     <link href="~/assets/img/logo.webp" rel="icon" type="image/webp">
 
     <!-- Open Graph Meta Tags -->
@@ -94,6 +112,12 @@
     @RenderSection("HeadContent", required: false)
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T42NZJRQ"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
         <a href="@Url.Action("Index", "Home")" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5" title="Storm Ekspress Ana Sayfa">

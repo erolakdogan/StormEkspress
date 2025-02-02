@@ -1,0 +1,24 @@
+﻿User-agent: *
+Disallow: /basvuru/
+Disallow: /error
+Disallow: /Account/
+Disallow: /Admin/
+Disallow: /api/
+Allow: /hakkimizda
+Allow: /hizmetlerimiz
+Allow: /hizmetlerimiz/*
+Allow: /iletisim
+Allow: /success
+
+Crawl-delay: 1  # 1 saniyelik delay
+Host: www.stormekspress.com
+Sitemap: https://www.stormekspress.com/sitemap.xml
+
+# Google Image Bot Optimizasyonu
+User-agent: Googlebot-Image
+Allow: /images/
+Disallow: /temp-images/
+
+# Ads Bot Filtreleme
+User-agent: AdsBot-Google
+Disallow: /basvuru/

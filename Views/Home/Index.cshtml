@@ -26,35 +26,50 @@
         });
     </script>
 }
+<!-- Head Content -->
 @section HeadContent {
-    @foreach (var item in Model.Intro)
+    @foreach (var item in Model.Intro.Take(1))
     {
-        <link rel="preload" href="@item.ImageUrl" as="image" type="image/webp">
+        <link rel="preload" href="@item.ImageUrl?width=1200&quality=70" as="image"
+              imagesrcset="@item.ImageUrl?width=480&quality=70 480w,
+                          @item.ImageUrl?width=768&quality=70 768w,
+                          @item.ImageUrl?width=1200&quality=70 1200w"
+              imagesizes="100vw">
     }
 }
-<!-- Carousel Start -->
+
+<!-- Optimized Header Carousel -->
 <div class="container-fluid p-0 pb-5">
-    <div class="owl-carousel header-carousel position-relative mb-5" data-carousel="header">
-        @for (int i = 0; i < Model.Intro.Count; i++)
+    <div class="owl-carousel header-carousel position-relative mb-5">
+        @foreach (var (item, index) in Model.Intro.Select((item, index) => (item, index)))
         {
-            var item = Model.Intro[i];
-            // İlk öğe için lazy loading devredışı, diğerleri için lazy
-            var loadingAttr = i == 0 ? "" : "loading=\"lazy\"";
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid"
-                     src="@item.ImageUrl"
-                     alt="@item.ImageAlt"
-                @Html.Raw(loadingAttr)
-                     width="1903"
-                     height="1070"
-                     sizes="(max-width: 768px) 100vw, 1903px"
-                     srcset="@item.ImageUrl 1903w, @item.ImageUrl.Replace(".webp", "-768w.webp") 768w, @item.ImageUrl.Replace(".webp", "-480w.webp") 480w">
+                <picture>
+                    <source type="image/webp"
+                            srcset="@item.ImageUrl?width=1200&format=webp&quality=75 1200w,
+                                    @item.ImageUrl?width=768&format=webp&quality=70 768w,
+                                    @item.ImageUrl?width=480&format=webp&quality=65 480w"
+                            sizes="(max-width: 480px) 100vw,
+                                  (max-width: 768px) 100vw,
+                                  100vw">
+                    <img class="img-fluid"
+                         src="@item.ImageUrl?width=1200&quality=70"
+                         alt="@item.Title - @item.Subtitle"
+                         width="1200"
+                         height="675"
+                         loading="@(index == 0 ? "eager" : "lazy")"
+                         decoding="async"
+                         fetchpriority="@(index == 0 ? "high" : "auto")"
+                         style="aspect-ratio: 16/9; object-fit: cover;">
+                </picture>
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-10 col-lg-8">
-                                <h1 class="custom-h1 text-white text-uppercase mb-3 animated slideInDown">@item.Title</h1>
-                                <h2 class="custom-h2 display-3 text-white animated slideInDown mb-4">@Html.Raw(item.Subtitle)</h2>
+                                <h2 class="custom-h1 text-white text-uppercase mb-3 animated slideInDown">@item.Title</h2>
+                                <h1 class="custom-h2 display-3 text-white animated slideInDown mb-4">
+                                    @Html.Raw(item.Subtitle)
+                                </h1>
                             </div>
                         </div>
                     </div>
@@ -63,6 +78,8 @@
         }
     </div>
 </div>
+
+
 <!-- About Start -->
 <div class="container-fluid overflow-hidden px-lg-0">
     <div class="container about px-lg-0">
@@ -78,7 +95,7 @@
                                 (max-width: 992px) 50vw,
                                 600px"
                          alt="Karabük Kurye - @Model.About.MissionImageAlt"
-                         width="600" 
+                         width="600"
                          height="400"
                          loading="lazy"
                          decoding="async"
@@ -164,8 +181,8 @@
                             <img class="position-absolute img-fluid h-100 w-100"
                                  src="@imageFeature.ImageUrl"
                                  srcset="@imageFeature.ImageUrl?width=928 928w,
-                             @imageFeature.ImageUrl?width=768 768w,
-                             @imageFeature.ImageUrl?width=480 480w"
+                                     @imageFeature.ImageUrl?width=768 768w,
+                                     @imageFeature.ImageUrl?width=480 480w"
                                  sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 928px"
                                  style="object-fit: contain;"
                                  alt="@imageFeature.ImageAlt"

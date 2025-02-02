@@ -28,7 +28,6 @@
     </div>
 </div>
 <!-- Page Header End -->
-
 <!-- Service Start -->
 <div class="container-xxl py-5">
     <div class="container py-5">
@@ -36,35 +35,39 @@
             <h6 class="text-secondary text-uppercase mb-3">Hizmetlerimiz</h6>
             <h1 class="mb-5">Hizmetlerimizi Keşfedin</h1>
         </div>
-        <div class="row g-4">
-            <div class="row g-4">
-                @foreach (var item in Model.Services)
-                {
-                        <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item p-4">
-                            <div class="overflow-hidden mb-4">
-                                <img class="img-fluid"
-                                     src="@item.ImageUrl"
-                                     alt="@item.Name"
-                                     loading="lazy"
-                                     srcset="@item.ImageUrl 1920w,
-                             @item.ImageUrl.Replace(".webp", "-small.webp") 800w"
-                                     sizes="(max-width: 600px) 800px, (max-width: 1024px) 1200px, 1920px">
-                            </div>
-                            <h4 class="mb-3">@item.Name</h4>
-                            <p>@item.Description</p>
-                            <a class="btn-slide mt-2" href="/hizmetlerimiz/@item.Slug">
-                                <i class="fa fa-arrow-right"></i><span>Detaylar</span>
-                            </a>
+        <div class="row g-4" style="min-height: 400px;">
+            @foreach (var item in Model.Services)
+            {
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item p-4">
+                        <div class="overflow-hidden mb-4" style="aspect-ratio: 360/359;">
+                            <img class="img-fluid"
+                                 src="@item.ImageUrl?width=360&quality=75"
+                                 srcset="@item.ImageUrl?width=360 360w,
+                                         @item.ImageUrl?width=600 600w,
+                                         @item.ImageUrl?width=800 800w"
+                                 sizes="(max-width: 576px) calc(100vw - 30px),
+                                        (max-width: 768px) calc(50vw - 40px),
+                                        360px"
+                                 alt="Karabük Kurye - @item.Name Hizmeti"
+                                 width="360"
+                                 height="359"
+                                 loading="lazy"
+                                 decoding="async"
+                                 style="object-fit: cover;">
                         </div>
+                        <h4 class="mb-3">@item.Name</h4>
+                        <p>@item.Description</p>
+                        <a class="btn-slide mt-2" href="/hizmetlerimiz/@item.Slug" aria-label="@item.Name hizmet detayları">
+                            <i class="fa fa-arrow-right"></i><span>Detaylar</span>
+                        </a>
                     </div>
-                }
-            </div>
+                </div>
+            }
         </div>
     </div>
 </div>
 <!-- Service End -->
-
 <!-- Testimonial Start -->
 <section id="referanslarimiz" class="clients section">
     <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -73,17 +76,43 @@
                 <h6 class="text-secondary text-uppercase mb-3">Referenslarımız</h6>
                 <h1 class="mb-0">Hizmet verdiğimiz mutlu müşterilerimiz</h1>
             </div>
-            <div class="owl-carousel testimonial-carousel wow fadeInUp swiper-wrapper align-items-center">
+            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s" itemscope itemtype="http://schema.org/ImageGallery">
                 @foreach (var item in Model.References)
                 {
-                    <div class="testimonial-item p-4 my-5">
-                        <div class="d-flex align-items-end mb-4 swiper-slide">
-                            <img src="@item.ImageUrl" alt="@item.Name" class="img-fluid lazyload" loading="lazy" />
+                    <div class="testimonial-item p-4 my-5" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                        <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                        <div class="d-flex align-items-end mb-4">
+                            <img class="img-fluid flex-shrink-0"
+                                 width="465"
+                                 height="536"
+                                 alt="@item.Name - Karabük Kurye Referans Görseli"
+                                 src="@item.ImageUrl?width=10&quality=20"
+                                 data-src="@item.ImageUrl"
+                                 loading="lazy"
+                                 decoding="async"
+                                 itemprop="contentUrl"
+                                 aria-label="@item.Name referans görseli"
+                                 srcset="@item.ImageUrl?width=465 465w,
+                             @item.ImageUrl?width=768 768w,
+                             @item.ImageUrl?width=992 992w"
+                                 sizes="(max-width: 576px) 90vw,
+                            (max-width: 992px) 50vw,
+                            465px"
+                                 style="background: #f5f5f5; transition: opacity 0.3s;"
+                                 onload="this.style.opacity=1">
                         </div>
+                        <meta itemprop="description" content="Karabük Kurye @item.Name referans çalışması">
+                        <meta itemprop="name" content="@item.Name">
                     </div>
-
                 }
             </div>
+            <noscript>
+                <style>
+                    .testimonial-carousel img {
+                        opacity: 1 !important;
+                    }
+                </style>
+            </noscript>
         </div>
     </div>
 </section>

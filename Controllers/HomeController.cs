@@ -89,6 +89,10 @@ namespace StormEkspress.Controllers
             var breadcrumbJson = _breadcrumbService.GetBreadcrumbJson(breadcrumbs);
             ViewData["Breadcrumbs"] = breadcrumbs;
             ViewData["BreadcrumbJson"] = breadcrumbJson;
+
+            var request = HttpContext.Request;
+            var canonicalUrl = $"{request.Scheme}://{request.Host}{request.Path}";
+            ViewData["CanonicalUrl"] = canonicalUrl;
             return View(model);
         }
 
@@ -102,6 +106,9 @@ namespace StormEkspress.Controllers
             ViewData["Breadcrumbs"] = breadcrumbs;
             ViewData["BreadcrumbJson"] = breadcrumbJson;
             ViewData["PageTitle"] = "Hakkımızda";
+            var request = HttpContext.Request;
+            var canonicalUrl = $"{request.Scheme}://{request.Host}{request.Path}";
+            ViewData["CanonicalUrl"] = canonicalUrl;
             return View(model);
         }
 
@@ -115,12 +122,19 @@ namespace StormEkspress.Controllers
             var breadcrumbJson = _breadcrumbService.GetBreadcrumbJson(breadcrumbs);
             ViewData["Breadcrumbs"] = breadcrumbs;
             ViewData["BreadcrumbJson"] = breadcrumbJson;
+            var request = HttpContext.Request;
+            var canonicalUrl = $"{request.Scheme}://{request.Host}{request.Path}";
+            ViewData["CanonicalUrl"] = canonicalUrl;
+
             return View(model);
         }
 
         [HttpPost("basvuru/kurye")]
         public async Task<IActionResult> KuryeBasvuruFormu(HomePageDto model)
         {
+            var request = HttpContext.Request;
+            var canonicalUrl = $"{request.Scheme}://{request.Host}{request.Path}";
+            ViewData["CanonicalUrl"] = canonicalUrl;
             try
             {
                 ViewData["Title"] = "Kurye Başvuru Formu";
@@ -163,12 +177,18 @@ namespace StormEkspress.Controllers
             var breadcrumbJson = _breadcrumbService.GetBreadcrumbJson(breadcrumbs);
             ViewData["Breadcrumbs"] = breadcrumbs;
             ViewData["BreadcrumbJson"] = breadcrumbJson;
+            var request = HttpContext.Request;
+            var canonicalUrl = $"{request.Scheme}://{request.Host}{request.Path}";
+            ViewData["CanonicalUrl"] = canonicalUrl;
             return View(model);
         }
 
         [HttpPost("basvuru/restoran")]
         public async Task<IActionResult> RestoranBasvuruFormu(RestaurantApplication application)
         {
+            var request = HttpContext.Request;
+            var canonicalUrl = $"{request.Scheme}://{request.Host}{request.Path}";
+            ViewData["CanonicalUrl"] = canonicalUrl;
             if (!ModelState.IsValid)
             {
                 ViewData["Title"] = "Restoran Başvuru Formu";
@@ -207,6 +227,9 @@ namespace StormEkspress.Controllers
         [Route("hizmetlerimiz")]
         public async Task<IActionResult> Services(string language = "tr")
         {
+            var request = HttpContext.Request;
+            var canonicalUrl = $"{request.Scheme}://{request.Host}{request.Path}";
+            ViewData["CanonicalUrl"] = canonicalUrl;
             var currentPath = Request.Path.ToString();
             var model = GetHomePageData(language, currentPath);
             var breadcrumbs = _breadcrumbService.GetBreadcrumbs(currentPath);
@@ -220,6 +243,9 @@ namespace StormEkspress.Controllers
         [Route("hizmetlerimiz/{slug}")]
         public async Task<IActionResult> ServiceDetail(string slug, string language = "tr")
         {
+            var request = HttpContext.Request;
+            var canonicalUrl = $"{request.Scheme}://{request.Host}{request.Path}";
+            ViewData["CanonicalUrl"] = canonicalUrl;
             var currentPath = Request.Path.ToString();
             var model = GetHomePageData(language, currentPath);
             var service = model.Services.FirstOrDefault(s => s.Slug == slug);
@@ -242,6 +268,9 @@ namespace StormEkspress.Controllers
         [Route("iletisim")]
         public async Task<IActionResult> Contact(string language = "tr")
         {
+            var request = HttpContext.Request;
+            var canonicalUrl = $"{request.Scheme}://{request.Host}{request.Path}";
+            ViewData["CanonicalUrl"] = canonicalUrl;
             var currentPath = Request.Path.ToString();
             var model = GetHomePageData(language, currentPath);
             var breadcrumbs = _breadcrumbService.GetBreadcrumbs(currentPath);
@@ -254,6 +283,9 @@ namespace StormEkspress.Controllers
 
         public IActionResult Success(string language = "tr")
         {
+            var request = HttpContext.Request;
+            var canonicalUrl = $"{request.Scheme}://{request.Host}{request.Path}";
+            ViewData["CanonicalUrl"] = canonicalUrl;
             var currentPath = Request.Path.ToString();
             var model = GetHomePageData(language, currentPath);
             var breadcrumbs = _breadcrumbService.GetBreadcrumbs(currentPath);

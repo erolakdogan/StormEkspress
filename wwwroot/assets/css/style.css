@@ -784,3 +784,22 @@ a {
         flex-basis: 45%;
     }
 }
+
+/* Mobil (<=576px) */
+@media (max-width: 576px) {
+    .ps-lg-0 {
+        padding-left: 0 !important;
+    }
+}
+
+/* Tablet (768px) */
+@media (max-width: 768px) {
+    .about-text {
+        padding-top: 2rem;
+    }
+}
+
+/* Desktop (>=992px) */
+.align-items-stretch > [class^="col-"] {
+    min-height: 400px;
+}

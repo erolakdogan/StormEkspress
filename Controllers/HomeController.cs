@@ -306,7 +306,8 @@ namespace StormEkspress.Controllers
         [ResponseCache(Duration = 3600, Location = ResponseCacheLocation.Any)]
         public async Task<IActionResult> GenerateSitemap()
         {
-            var baseUrl = $"{Request.Scheme}://{Request.Host.Value.TrimEnd('/')}";
+            var host = Request.Host.HasValue ? Request.Host.Value.TrimEnd('/') : "localhost";
+            var baseUrl = $"{Request.Scheme}://{host}";
 
             var services = GetHomePageData("tr", "/").Services;
 
@@ -323,26 +324,28 @@ namespace StormEkspress.Controllers
             urls.AddRange(services.Select(service =>
                 new SitemapUrl(
                     $"{baseUrl}/hizmetlerimiz/{service.Slug}",
-                    DateTime.UtcNow, // UpdatedDate yerine UtcNow kullanıldı
+                    DateTime.UtcNow,
                     "weekly",
                     0.7)
             ));
 
+            // XML Namespace
+            XNamespace ns = "http://www.sitemaps.org/schemas/sitemap/0.9";
+
             // XML oluşturma
             var xml = new XDocument(
                 new XDeclaration("1.0", "utf-8", "yes"),
-                new XElement("urlset",
-                    new XAttribute("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9"),
-                    urls.Select(url => new XElement("url",
-                        new XElement("loc", url.Url),
-                        new XElement("lastmod", url.LastModified.ToString("yyyy-MM-ddTHH:mm:sszzz")),
-                        new XElement("changefreq", url.ChangeFrequency),
-                        new XElement("priority", url.Priority.ToString("0.0"))
+                new XElement(ns + "urlset",
+                    urls.Select(url => new XElement(ns + "url",
+                        new XElement(ns + "loc", url.Url),
+                        new XElement(ns + "lastmod", url.LastModified.ToString("yyyy-MM-ddTHH:mm:ssK")),
+                        new XElement(ns + "changefreq", url.ChangeFrequency),
+                        new XElement(ns + "priority", url.Priority.ToString("0.0"))
                     ))
                 )
             );
 
-            return Content(xml.ToString(), "text/xml; charset=utf-8");
+            return Content(xml.Declaration + xml.ToString(), "application/xml; charset=utf-8");
         }
 
         public record SitemapUrl(
@@ -350,7 +353,7 @@ namespace StormEkspress.Controllers
             DateTime LastModified,
             string ChangeFrequency,
             double Priority
-        );
+        ); 
 
     }
 }

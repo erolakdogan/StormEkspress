@@ -151,19 +151,23 @@
   "references": [
     {
       "imageUrl": "/assets/img/references/bursaiskender.webp",
-      "name": "Bursa İskender"
+      "name": "Bursa İskender Karabük"
     },
     {
       "imageUrl": "/assets/img/references/eymen.webp",
-      "name": "Eymen Köfteci"
+      "name": "Eymen Köfteci Karabük"
     },
     {
       "imageUrl": "/assets/img/references/durumsever.webp",
-      "name": "Dürüm Sever"
+      "name": "Dürüm Sever Karabük"
     },
     {
       "imageUrl": "/assets/img/references/lavinia.webp",
-      "name": "lavinia"
+      "name": "lavinia Karabük"
+    },
+	{
+      "imageUrl": "/assets/img/references/xldoner.webp",
+      "name": "xldöner Karabük"
     }
   ],
 

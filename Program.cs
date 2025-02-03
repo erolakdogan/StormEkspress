@@ -1,12 +1,31 @@
+using Microsoft.Extensions.FileProviders;
 using StormEkspress.Helper;
 using StormEkspress.Services;
 using StormEkspress.Services.Implementations;
 using StormEkspress.Services.Interfaces;
+using System.Security.Cryptography.X509Certificates;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 builder.Configuration.AddJsonFile("wwwroot/localization/tr.json", optional: false, reloadOnChange: true);
 builder.Configuration.AddJsonFile("wwwroot/localization/keywords.json", optional: false, reloadOnChange: true);
+
+// Sertifika dosyasýnýn yolu ve parolasý
+var certificatePath = Path.Combine(Directory.GetCurrentDirectory(), "certificate.pfx");
+var certificatePassword = "123456789"; // Buraya PFX dosyanýzýn parolasýný girin
+
+// Sertifikayý yükleyin
+var certificate = new X509Certificate2(certificatePath, certificatePassword);
+
+// Kestrel sunucusunu yapýlandýrýn
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(443, listenOptions =>
+    {
+        listenOptions.UseHttps(certificate);
+    });
+});
+
 builder.Services.AddControllersWithViews(options =>
 {
     options.Filters.Add(new SeoMetaDataFilter());

@@ -6,6 +6,9 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@pageTitle</title>
     <!-- Preconnect & DNS Prefetch İpuçları (En Üstte) -->
     <link rel="dns-prefetch" href="https://code.jquery.com">
     <link rel="preconnect" href="https://code.jquery.com" crossorigin>
@@ -14,15 +17,6 @@
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HV2K5K4P9B"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-HV2K5K4P9B');
-    </script>
     <!-- Google Tag Manager -->
     <script>
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -31,15 +25,10 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-T42NZJRQ');</script>
     <!-- End Google Tag Manager -->
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@pageTitle</title>
-
     <!-- Canonical Link (SEO için) -->
     <link rel="canonical" href="@ViewData["CanonicalUrl"]" />
-
+    <!-- Google Adsense -->
+    <meta name="google-adsense-account" content="ca-pub-9576033286912012">
     <!-- JSON-LD Breadcrumbs -->
     @if (!string.IsNullOrEmpty(breadcrumbJson))
     {
@@ -330,6 +319,16 @@
             console.error('Script yüklemesinde hata oluştu:', error);
           }
         });
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HV2K5K4P9B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-HV2K5K4P9B');
     </script>
 
     @RenderSection("Scripts", required: false) <!-- Burada Scripts section'ı render edilmesi sağlanır -->

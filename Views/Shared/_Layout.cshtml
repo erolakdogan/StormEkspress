@@ -40,8 +40,8 @@
     <meta name="keywords" content="@string.Join(", ", Model.Keywords)">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Storm Ekspress">
-    <link href="~/assets/img/logo.webp" rel="icon" type="image/webp">
-
+    @* <link href="~/assets/img/logo.webp" rel="icon" type="image/webp"> *@
+    <link rel="icon" href="~/assets/img/logo.ico" type="image/x-icon" />
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="@ViewData["OGUrl"]" />
@@ -115,7 +115,7 @@
              /assets/img/logo.webp?width=300 300w"
                  sizes="(max-width: 768px) 150px,
             300px"
-                 alt="Storm Express Kurye Firması Logosu"
+                 alt="Storm Ekspress Karabük Kurye Hizmeti"
                  width="150"
                  height="80"
                  class="mb-2"
@@ -169,7 +169,7 @@
     @RenderBody()
     <div class="footer-fixed-contact">
         <a class="footer-fixed-contact-left" href="tel:@Model.ContactInfo.Phone">
-            <i class="fa-solid fa-phone"></i>
+            <i class="fa fa-phone" aria-hidden="true"></i>
             Bizi Arayın
         </a>
         <a class="footer-fixed-contact-right" href="https://wa.me/905434267789" style="color: #ffffff; background-color: #007b5e;">

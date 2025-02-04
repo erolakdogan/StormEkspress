@@ -4,6 +4,7 @@ namespace StormEkspress.Services
 {
     public class BreadcrumbService
     {
+        private readonly string _imgUrl = "https://stormekspress.com/logo.ico";
         private readonly IConfiguration _configuration;
 
         public BreadcrumbService(IConfiguration configuration)
@@ -84,7 +85,8 @@ namespace StormEkspress.Services
                     @type = "ListItem",
                     position = index + 1,
                     name = breadcrumb.Text,
-                    item = breadcrumb.Url
+                    item = breadcrumb.Url,
+                    image = _imgUrl,
                 }).ToList()
             };
 
